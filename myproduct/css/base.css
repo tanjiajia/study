@@ -1,0 +1,35 @@
+/*
+ * Basic Reset
+ */
+* {
+    margin: 0; padding: 0; outline:none;
+}
+
+h1, h2, h3, h4, h5, h6 { font-weight: normal; }
+img, fieldset { border: 0; }
+img { max-width: 100%; vertical-align: middle; }
+button { cursor: pointer; }
+ul { list-style: none; }
+a { text-decoration: none;}
+
+a:hover {
+    cursor: pointer;
+}
+
+/*
+ * typograph
+ */
+body, input, select, textarea, button {
+    font-family: 'Helvetica Neue', Helvetica,STHeiTi,sans-serif,'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', 'Arial', 'sans-serif';
+}
+html, body {
+	position: relative;
+	height: 100%;
+}
+body {
+	background: #eee;
+	font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+	color:#000;
+	margin: 0;
+	padding: 0;
+}

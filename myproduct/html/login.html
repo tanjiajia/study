@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  		<meta name="format-detection" content="telephone=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/base.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/login.css"/>
+	</head>
+	<body>
+		<article class="box0 bg"></article>
+		
+		
+		<!--登陆-->
+		<article class="box0 box1-login" id="mobile" data-type="showHide">
+		  <div class="box1">
+		    <div class="box1-bg">
+		      <!--<img class="box1-img" src="../images/bg2.png" />-->
+		    </div>
+		    <div class="box1-line">
+		      <div class="box1-input" data-type="input">
+		        <input placeholder="输入手机号" maxlength="11" type="tel" name="mobile" data-type="mobile"  label="手机号" />
+		      </div>
+		    </div>
+		    <div class="box1-line">
+		      <div class="box1-input" data-type="input">
+		        <input placeholder="输入短信验证码" maxlength="6" type="tel" name="mobile" data-type="smscode"  label="短信验证码" />
+		      </div>
+		      <div class="box1-code-wrap">
+		        <div class="box1-code" data-type="code-begin">点击发送验证码</div>
+		        <div class="box1-code dn" data-type="code-ing">发送中...</div>
+		        <div class="box1-code dn" data-type="code-over">已发送（）</div>
+		      </div>
+		    </div>
+		    <div class="box1-btn-wrap box1-line">
+		      <div class="box1-btn" data-type="submit-begin">提交</div>
+		    </div>
+		  </div>
+		</article>
+		
+		<script src="../js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+		<!--<script src="../js/jquery.form.js" type="text/javascript" charset="utf-8"></script>-->
+		<script src="../js/login.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>
