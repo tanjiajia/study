@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+		<meta charset="utf-8">
+		<title>血糖小测试</title>
+		<meta charset="utf-8">
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Cache-Control" content="no-cache">
+		<meta http-equiv="Expires" content="-1">
+		<meta name="viewport" content="width=640,user-scalable=no">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<meta content="telephone=no" name="format-detection">
+		<meta content="email=no" name="format-detection">
+		<link rel="stylesheet" href="css/swiper.min.css">
+		<link rel="stylesheet" href="css/animate.css">
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/site.css">
+		<script src="lib/angular.min.js"></script>
+	</head>
+
+	<body>
+	
+		<div class="swiper-container swiper-container-vertical" id="MainSwiper">
+			<div class="swiper-wrapper ng-scope" ng-app="MyApp" ng-controller="QuestionController">
+				<div class="swiper-slide stop-swiping swiper-slide-active" id="p0" style="height: 1070px;">
+					<div class="content">
+
+						<div class="box">							
+							<img src="images/p0_btn1.png" id="p0_btn1">
+							
+						</div>
+					</div>
+				</div>
+		
+
+				<div class="swiper-slide stop-swiping swiper-slide-next" id="p1" style="height: 1070px;">
+					<div class="content">
+
+						<img src="images/q1_number.png">
+						
+						<div class="questionName_box">
+							<div class="text ng-binding">
+								{{QuestionListsString[0].Name}}
+							</div>
+						</div>
+						<ul class="question_list">
+							<li ng-repeat="x in QuestionLists[0].items" class="ng-scope"><img src="images/{{x.option+'_icon_'+x.imgSrc+'.png'}}" class="number_icon">
+								<div class="text  {{x.imgStyle}}" ng-click="AnswerClick(QuestionLists[0],x)">
+									{{x.item}}
+								</div>
+							</li>
+						</ul>
+						<button class="NextquestionBtn" ng-click="Nextquestion(0)" ng-disabled="QuestionLists[0].nextBtn==false?false:true" disabled="disabled"></button>
+					</div>
+				</div>
+				<div class="swiper-slide stop-swiping swiper-slide-next" id="p2" style="height: 1070px;">
+					<div class="content">
+
+						<img src="images/q1_number.png">
+						
+						<div class="questionName_box">
+							<div class="text ng-binding">
+								{{QuestionListsString[1].Name}}
+							</div>
+						</div>
+						<ul class="question_list">
+							<li ng-repeat="x in QuestionLists[1].items" class="ng-scope"><img src="images/{{x.option+'_icon_'+x.imgSrc+'.png'}}" class="number_icon">
+								<div class="text  {{x.imgStyle}}" ng-click="AnswerClick(QuestionLists[1],x)">
+									{{x.item}}
+								</div>
+							</li>
+						</ul>
+						<button class="NextquestionBtn" ng-click="Nextquestion(0)" ng-disabled="QuestionLists[0].nextBtn==false?false:true" disabled="disabled"></button>
+					</div>
+				</div>
+				<div class="swiper-slide stop-swiping swiper-slide-next" id="p3" style="height: 1070px;">
+					<div class="content">
+
+						<img src="images/q1_number.png">
+						
+						<div class="questionName_box">
+							<div class="text ng-binding">
+								{{QuestionListsString[2].Name}}
+							</div>
+						</div>
+						<ul class="question_list">
+							<li ng-repeat="x in QuestionLists[2].items" class="ng-scope"><img src="images/{{x.option+'_icon_'+x.imgSrc+'.png'}}" class="number_icon">
+								<div class="text  {{x.imgStyle}}" ng-click="AnswerClick(QuestionLists[2],x)">
+									{{x.item}}
+								</div>
+							</li>
+						</ul>
+						<button class="NextquestionBtn" ng-click="Nextquestion(0)" ng-disabled="QuestionLists[0].nextBtn==false?false:true" disabled="disabled"></button>
+					</div>
+				</div>
+				<div class="swiper-slide stop-swiping swiper-slide-next" id="p4" style="height: 1070px;">
+					<div class="content">
+
+						<img src="images/q1_number.png">
+						
+						<div class="questionName_box">
+							<div class="text ng-binding">
+								{{QuestionListsString[3].Name}}
+							</div>
+						</div>
+						<ul class="question_list">
+							<li ng-repeat="x in QuestionLists[3].items" class="ng-scope"><img src="images/{{x.option+'_icon_'+x.imgSrc+'.png'}}" class="number_icon">
+								<div class="text  {{x.imgStyle}}" ng-click="AnswerClick(QuestionLists[3],x)">
+									{{x.item}}
+								</div>
+							</li>
+						</ul>
+						<button class="NextquestionBtn" ng-click="Nextquestion(0)" ng-disabled="QuestionLists[0].nextBtn==false?false:true" disabled="disabled"></button>
+					</div>
+				</div>
+				<div class="swiper-slide stop-swiping swiper-slide-next" id="p5" style="height: 1070px;">
+					<div class="content">
+
+						<img src="images/q1_number.png">
+						
+						<div class="questionName_box">
+							<div class="text ng-binding">
+								{{QuestionListsString[4].Name}}
+							</div>
+						</div>
+						<ul class="question_list">
+							<li ng-repeat="x in QuestionLists[4].items" class="ng-scope"><img src="images/{{x.option+'_icon_'+x.imgSrc+'.png'}}" class="number_icon">
+								<div class="text  {{x.imgStyle}}" ng-click="AnswerClick(QuestionLists[4],x)">
+									{{x.item}}
+								</div>
+							</li>
+						</ul>
+						<button class="NextquestionBtn" ng-click="Nextquestion(0)" ng-disabled="QuestionLists[0].nextBtn==false?false:true" disabled="disabled"></button>
+					</div>
+				</div>
+				<div class="swiper-slide stop-swiping" id="p6" style="height: 1070px;">
+					<div class="content">
+						
+						<img src="images/TestResult_image1.png" class="img1 openshare_btn" alt="">
+						<div class="img1_1" data-animation="animated tada repeatAnimate">
+						</div>
+						<div class="img2">
+							<img src="images/TestResult_flash2.png" class="flash_img" data-animation="animated flash repeatAnimate">
+							<img src="images/TestResult_guake.png" class="guake">
+							<img src="images/TestResult_jige.png" class="jige">
+							<img src="images/TestResult_manfen.png" class="manfen">
+						</div>
+						<!--<img class="img3" src="images/TestResult_qrcode.png">-->
+						<div class="footer">
+							<img src="images/p6_footerbtns.png">
+							<button id="againTestBtn" ng-click="againTest()">不服重测</button>
+							<button id="lookCheatsBtn">偷瞄秘籍</button>
+						</div>
+					</div>
+				</div>
+			
+
+				<div class="swiper-slide" id="p7" style="height: 1070px;">
+					<div class="content">
+						<img src="images/nextpagebtn.png" class="NextPageBtn">
+					</div>
+				</div>
+			
+
+				<div class="swiper-slide" id="p8" style="height: 1070px;">
+					<div class="content">
+						<img src="images/bufuchongce_2.png" ng-click="againTest()" class="NotFCCBtn">
+						<img src="images/TestResult_image1.png" class="openshare_btn">
+					</div>
+				</div>
+				
+			</div>
+		</div>
+          
+        <div class="dialog-box" id="ShareDilog">
+			<img src="images/share_bg.png" alt="">
+		</div>
+		
+		<script src="lib/jquery.js"></script>
+		<script src="lib/swiper.min.js"></script>
+		<script src="lib/site.js"></script>
+		<script src="lib/app.js"></script>
+	
+</body></html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name='viewport' content='width=device-width, initial-scale=0.5, maximum-scale=0.5' />
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			/*#juliImg{
+				-webkit-animation: rotate01 0.4s infinite;
+				animation: rotate01 0.4s infinite;
+				-webkit-transform-origin: 52% 98%;
+				transform-origin: 52% 98%;
+			}
+			@-webkit-keyframes rotate01{
+				0%{
+					transform: rotate(-9deg);
+				}
+				50%{
+					transform: rotate(15deg);
+				}
+				100%{
+					transform: rotate(-9deg);
+				}
+			}
+			@keyframes rotate01{
+				0%{
+					transform: rotate(-9deg);
+				}
+				50%{
+					transform: rotate(15deg);
+				}
+				100%{
+					transform: rotate(-9deg);
+				}
+			}*/
+			.resize{
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<section class="swiper-slide swiper-slide-2 slide-imp">
+			<img src="images/juli_bg.png" class="resize" style="width: 640px;height: 960px;z-index: 1;" />
+			<img id="juliImg" src="images/hand.png" class="resize" style="width:160px;height:350px;top:177px;left:135px;z-index: 2;" />
+		</section>
+		
+		<script src="js/jquery-1.9.1-min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(document).on('touchmove',function(e){
+				e.preventDefault()
+			})
+			var w = $(window).width();
+			var h = $(window).height();
+			var scaleW = w / 640;
+			var scaleH = h / 960;
+			$('body,html').css({
+				width: w,
+				height: h
+			})
+			var resizes = document.querySelectorAll('.resize');
+			for(var j = 0; j < resizes.length; j++) {
+					resizes[j].style.width = parseInt(resizes[j].style.width) * scaleW + 'px';
+					resizes[j].style.height = parseInt(resizes[j].style.height) * scaleH + 'px';
+					resizes[j].style.top = parseInt(resizes[j].style.top) * scaleH + 'px';
+					resizes[j].style.left = parseInt(resizes[j].style.left) * scaleW + 'px';
+				}
+			
+			$.fn.myAnimate = function(op,clearIn){
+              	var defaults={
+                  	roInit:-10,
+                  	roStart:-5,
+                  	roEnd:25,
+                  	x:'85%',
+                  	y:'88%',
+                  	speed:50
+                }
+              	var self =this
+              	var i=0;
+          		var para=$.extend({},defaults,op)
+          	 	var switchIn = setInterval(function(){
+	         		$(self).css({'-webkit-transform':'rotate('+para.roInit+'deg)','-webkit-transform-origin':(para.x+" "+para.y+''+0)});
+	        		if(clearIn||op==true){
+	        			clearInterval(switchIn)
+	        		}
+	        		xunhuan();
+	        	},para.speed);
+	        	
+	        	function xunhuan() {
+	        		if(i%2==0){
+	        			if(para.roInit<para.roEnd){
+	        				para.roInit+=3;
+	        	   		}else{
+	        	   			i=1
+	        	   		}
+	        	 	}else if(para.roInit>para.roStart) {
+	        	 		para.roInit-=3;
+	        	 	}else{	
+	        	 		i=0
+	        	 	}
+	        	}
+            }
+			
+			// 或者采用style中的animation动画  封装后便于多次调用
+			$('#juliImg').myAnimate({
+              	roInit:0,
+              	roStart:-10,
+              	roEnd:15,
+              	x:'52%',
+              	y:'98%',
+              	speed:50
+            })
+		</script>
+	</body>
+</html>

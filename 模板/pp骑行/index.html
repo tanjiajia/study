@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html >
+<head>
+	<meta charset="UTF-8">
+	<meta name='viewport' content='width=device-width, initial-scale=0.5, maximum-scale=0.5,minimum-scale=0.5,user-scalable=no' />
+	<title>健康骑行</title>
+	<script type="text/javascript" src="js/jquery-1.9.1-min.js"></script>
+
+</head>
+<style>
+*{padding:0px;margin: 0px; }
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+section{height: 100%;width: 100%;position: relative;}
+.progress {
+	width: 100%;
+	margin: auto;
+	color: #fff;
+	text-align: center;
+	bottom: 200px;
+	font-size: 22px;
+}
+
+.middle {
+	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+}
+
+.center {
+	margin-left: 50%;
+}
+
+.canvascon {
+	position: absolute;
+	background: #28A5FF;
+	width: 100%;
+	height: 100%;
+	z-index: 999;
+}
+#c{
+	border-bottom-left-radius:20px ;
+	border-bottom-right-radius:20px ;
+}
+.bottle_con {
+    background-image:url(./images/bottle_bg1.jpg);
+    background-size: 100%;
+    height: 100%;
+    width: 100%;
+    
+}   
+.bottle_bgchange{
+	background-image:url(./images/bottle_bg.jpg);
+	background-size: 100%;
+    height: 100%;
+    width: 100%;
+    transition: all .3s 3s ease-in;
+    -webkit-transition: all .3s 3s ease-in;
+    opacity: 0;
+}
+.bottle_bgchange_over {opacity: 1;}
+.bottle {width: 407px;height: 390px;display: block;background-image:url(./images/product.png);position: absolute;left: 30%;top: 15%; z-index: 10;}
+@-webkit-keyframes bottle_fly{
+            
+}
+    /* 云 */
+.cloud {height: 100%;width: 100%;position: relative;}
+.cloud_img {width:100%;height:200%;background-image: url(./images/cloud.png);background-repeat: repeat-y;background-color: #6abdef;position: relative;top: 0px;left: 0px;}
+.cloudT{
+	animation:pureClodT 3s  linear 0.2s 1 forwards ;
+    -webkit-animation:pureClodT 3s  linear 0.2s  1 forwards ;
+}
+.cloudO{
+	animation:pureClodO 1s  linear 0s 1 forwards ;
+    -webkit-animation:pureClodO 1s  linear 0s 1 forwards ;
+}
+
+@-webkit-keyframes pureClodO{
+	0%{top: 100%;}
+	100%{top: 0;}
+}
+@-webkit-keyframes pureClodT{
+	0%{top:0;}
+	100%{top: -300%;}
+}
+@-webkit-keyframes pureClodL{
+	0%{left: 0;}
+	100%{left: -1900%;}
+}
+
+
+/* 主背景*/
+.index_bg{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+.index_bg .sky{
+	width: 100%;
+	height: 66%;
+	background: #6abdef;
+}
+.index_bg .river {
+	width: 100%;
+	height: 11%;
+	background: #52adff;
+}
+.index_bg .grass {
+	width: 100%;
+	height: 5%;
+	background: #c4dfb2;
+}
+.index_bg .road {
+	width: 100%;
+	height: 18%;
+	background: #f6f6f6;
+}
+
+section{
+  position: relative;
+}
+.pos-ab{
+	position: absolute;
+}
+.pos-re{
+	 position: relative;
+}
+
+.hide{
+	display: none;
+}
+.plane{
+	animation:planeScale  3s  linear  1 forwards;
+	-webkit-animation:planeScale 3s  linear  1 forwards;
+}
+@-webkit-keyframes planeScale{
+	 0%{ -webkit-transform:scale(1) translateY(0);}
+	25%{-webkit-transform:scale(10) translateY(-40%);}
+    50%{-webkit-transform:scale(20) translateY(-80%);}
+	75%{-webkit-transform:scale(20) translateY(-40%);}
+    100%{-webkit-transform:scale(20) translateY(0);}
+}
+.earth{
+	animation:earthTrans 3s  linear  1 forwards;
+	-webkit-animation:earthTrans 3s  linear  1 forwards;
+}
+@-webkit-keyframes earthTrans{
+	0%{ 
+	   -webkit-transform: translateX() ;
+	}
+	100%{
+	 -webkit-transform: translateX(43%);
+	}
+}
+.main_box{
+	background: #6abdef;
+}
+.bg{
+	background: #6abdef;
+}
+
+.plane_box {
+    position: absolute;
+    width: 300px;
+    height: 154px;
+    position: absolute;
+    z-index: 9;
+    margin: auto;
+    top: -15%;
+    left: 3%;
+    right: 0;
+    bottom: 0;
+    -webkit-transform: scale(0.1);
+}
+.plane {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: all .5s;
+    opacity: 1;}
+.product_box {
+    position: absolute;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;}
+
+.product_box .product {
+    position: absolute;
+    z-index: 3;
+    -webkit-transform: scale(0.19) rotate(7deg) translate(-81%, -138%);
+}
+
+.plane_box.move {
+    animation-name: plane_move;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    opacity: 1;
+}
+.plane_box .product_box {
+    -webkit-transform: scale(5);
+    }
+.plane_box.move2 .product_box {
+   
+    }
+.product_boxN{
+	 -webkit-animation:product_boxN 0.1s 0s ease 1 both;
+	 visibility: visible;
+}
+@-webkit-keyframes product_boxN{
+	0%{
+		 -webkit-transform: scale(19);
+	}
+    100%{
+    	-webkit-transform: scale(38);
+    }
+}
+.plane2{
+	position: absolute;
+    z-index: 5;
+    width: 100%;
+    margin: auto;
+    top: 0;
+    left: 0;
+    -webkit-transform:translateY(0) translateX(0) rotate(0deg) scale(20);
+    opacity: 0;
+    transition: opacity 0 linear .1s;
+}
+.plane_box.move2 .plane2 {
+	 -webkit-animation:plane_move2 .8s ease 1 forwards;
+}  
+@-webkit-keyframes plane_move2 {
+    0% {
+        -webkit-transform: translateY(0) translateX(0) rotate(0deg) scale(20);
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: translateY(-200%) translateX(-1000%) rotate(30deg) scale(20);
+        opacity: 0;
+
+    }
+} 
+/*20170107*/
+
+.ridebikeA{
+	z-index: 999;
+	-webkit-animation:ridebikeA 1s  steps(1, start) infinite forwards ;
+	animation:ridebikeA 1s  steps(1, start) infinite forwards ;
+}
+@-webkit-keyframes ridebikeA{
+	 0% {background-position-x: 0;}
+    14% {background-position-x: -300px;}
+    21% {background-position-x:-600px;}
+    28%{background-position-x: -900px;}
+    35%{background-position-x: -1200px;}
+    42%{background-position-x: -1500px;}
+    49%{background-position-x: -1800px;}
+    56% {background-position-x: -2100;}
+    63% {background-position-x: -2400px;}
+    70% {background-position-x:-2700px;}
+    77%{background-position-x: -3000px;}
+    85%{background-position-x: -3300px;}
+    93%{background-position-x: -3600px;}
+    100%{background-position-x: -3900px;}
+    
+}
+.changebikeA{
+	z-index: 999;
+	-webkit-animation:changebikeA 1.2s  steps(1, start) 2 both ;
+	animation:changebikeA 1.2s  steps(1, start) 2 both ;
+	background-position-x: -4200px;
+}
+@-webkit-keyframes changebikeA{
+	 0% {background-position-x: -3900px;}
+    16% {background-position-x: -4200px;}
+    33%{background-position-x: -4500px;}
+    51%{background-position-x: -4800px;}
+    67% {background-position-x: -5100px;}
+    %{background-position-x: -5400px;}
+    83%{background-position-x: -5700px;}
+     100%{background-position-x: -3900px;}
+}
+/* 弹出图片*/
+#mengban{
+ 		margin: 20% auto;
+ 		text-align: center;
+ 		
+ 	}
+ 	.mengbanCon{
+ 		width: 100%;
+ 		height: 100%;
+ 		background: rgba(0,0,0,0.5);
+ 		top: 0;
+ 		left: 0;
+ 		z-index: 999;
+ 		position: absolute !important;
+ 	}
+ 	.userpic{
+ 		border-radius: 5px;
+ 		overflow: hidden;
+ 	}
+ 	
+ 	li{
+ 		list-style-type: none;
+ 		float: left;
+ 	}
+ 	.lunbocon{
+ 		position: relative;
+ 	}
+ 	.del{
+ 		margin-left: 50%;
+ 		-webkit-transform: translateX(-50%);
+ 		background: url(images/del.png) no-repeat;
+ 		background-size: contain;
+ 	}
+ 	/*.cityL{
+ 		-webkit-animation:cityL 30s  linear 0s 1 forwards;
+ 		-webkit-animation: cityL 30s  linear 0s 1 forwards;
+ 	}
+ 	@-webkit-keyframes cityL{
+ 		0%{
+ 			-webkit-transform: translateX(0);
+ 		}
+ 		100%{
+ 			-webkit-transform: translateX(-50%);
+ 		}
+ 	}*/
+ 	.ride-speed-common{
+ 		-webkit-animation:speedcommon 3s  linear 0s 1 forwards;
+ 	}
+ 	@-webkit-keyframes speedcommon{
+ 		0%{
+ 			-webkit-transform: translateX(0);
+ 		}
+ 		100%{
+ 			-webkit-transform: translateX(-100%);
+ 		}
+ 	}
+ 	.ride-speed-parkA{
+ 		-webkit-animation:ridePark 3s  linear 0s 1 forwards;
+ 	}
+ 	@-webkit-keyframes ridePark{
+ 		0%{
+ 			-webkit-transform: translateX(0);
+ 		}
+ 		100%{
+ 			-webkit-transform: translateX(-100%);
+ 		}
+ 	}
+ 	.ride-speed-parkB{
+ 		-webkit-animation:rideParkB 3s  linear 0s 1 forwards;
+ 	}
+ 	@-webkit-keyframes rideParkB{
+ 		0%{
+ 			-webkit-transform: translateX(-100%);
+ 		}
+ 		100%{
+ 			-webkit-transform: translateX(-200%);
+ 		}
+ 	}
+ 	.ride-speed-yizi{
+ 		-webkit-animation:speedyizi 3s  linear 0s 1 forwards;
+ 	}
+ 	@-webkit-keyframes speedyizi{
+ 		0%{
+ 			-webkit-transform: translateX(0);
+ 		}
+ 		100%{
+ 			-webkit-transform: translateX(-233%);
+ 		}
+ 	}
+ 	.running{
+ 		-webkit-animation-play-state: running;
+ 	}
+ 	.paused{
+ 		-webkit-animation-play-state: paused;
+ 	}
+ 	.handani{
+ 		/*-webkit-animation:handani 1s  linear 0s infinite forwards;*/
+ 	}
+ 	/*@-webkit-keyframes handani{
+ 		0%{
+ 		opacity: 1;
+ 		}
+ 		100%{
+ 		opacity: 0;
+ 		}
+ 	}*/
+
+ 	.handani::after {
+			content: '';
+			height: 50px;
+			width: 50px;
+			border: 5px #fff solid;
+			border-radius: 50%;
+			display: block;
+			position: absolute;
+			left: -10px;
+			top: -25px;
+			-webkit-animation: zoomIn 1s .2s ease infinite;
+		}
+    @-webkit-keyframes zoomIn{0%{opacity:0;-webkit-transform:scale3d(.3,.3,.3);transform:scale3d(.3,.3,.3)}50%{opacity:1}}
+
+
+</style>
+<body>	
+	<!-- 起飞-->
+    <section class="main_box">
+        <div class=" pos-ab resize earth-sec" style="width: 2322px;">
+            <img src="images/earth.png" alt="" class="pos-ab resize" style="width: 2322px;height: 1334px;left:-1572px;" />
+            <img src="images/shine_icon.png" alt="" class="pos-ab resize start"style="width: 64px;left:360px;top: 520px;z-index: 20;">
+        </div>
+        <div class="plane_box">
+            <img alt="" class="plane2" src="images/plane2.png">
+            <img alt="" class=" plane-sec" src="images/plane.png">
+            <div class="product_box">
+                <img alt="" class="product" src="images/product.png">
+            </div>
+        </div>
+    </section>
+    
+	<section class="my_bottle cloudT  hide" >
+		<div class="cloud_img "></div>
+		<section  id="rideCon" class="pos-re " style="z-index: ;">
+		 <div class="index_bg">
+		 	<div id="sky" class="sky"></div>
+		 	<div id="river" class="river"></div>
+		 	<div id="grass" class="grass"></div>
+		 	<div id="road" class="road"></div>
+		 	
+		     <!--人在此处-->
+		    <div id="personChange"  class="person-change pos-ab" style="width:300px;height: 400px;z-index: 21;">  </div>
+		 </div>
+		    
+		<!-- 此处放 骑行背景-->
+		 <div class="ridecommon">
+		      <img class="resize pos-ab rideyizi " src="images/bench.png" style="width:654px;height: 213px;bottom:260px;left: 750px;z-index: 5;"/>		     
+	          <img src="images/door_02.png"  class="door2  pos-ab resizeN" style="width: 607px;height:1212px;left: 751px;bottom:1px ;z-index: 100;" />
+	          <img  class="game2  pos-ab resizeN" src="images/game02.png" style="width: 90px;height:143px;left: 850px;top:1100px ;z-index: 100;" />
+		      <img class="resize pos-ab park" src="images/park.png" style="width:3000px;height: 782px;left: 750px;z-index: 18;"/>
+		      <img src="images/door_04.png"  class="door4  pos-ab resizeN" style="width: 156px;height:884px;left: 750px;bottom: 190px;z-index: 20;"/>		     
+		 </div>
+		</section>		
+	</section>	
+	<section id="mengbanCon" class="hide mengbanCon">
+	      	<div id="mengban">
+	      		 <img src="images/mengbanimg1.png" class="pos-ab resize mengbanbg" style="width: 750px;height: 600px;left: 0;"/>
+	      		 <div  class="pos-ab resize userpic" style="width: 637px;height: 409px;left: 58px;top:308px;">
+	      		 	<ul class="lunbocon resize" style="">
+	      		 		<li><img src="images/userpic01.png" class="resize userpic" style="width: 637px;left: 58px;top:308px;"/></li>
+	      		 		<li><img src="images/userpic01.png" class="resize userpic" style="width: 637px;left: 58px;top:308px;"/></li>
+	      		 		<li><img src="" class="resize userpic hide" style="width: 637px;left: 58px;top:308px;"/></li>
+	      		 		<li><img src="" class="resize userpic hide" style="width: 637px;left: 58px;top:308px;"/></li>
+	      		 	</ul>
+	      		 	<img src="images/left.png"  class="lefticon resize pos-ab" style="display: none;width: 50px;left:-1px;top:150px;"/>
+	      		 	<img src="images/right.png"  class="righticon resize pos-ab" style="display: block;width: 50px;right: 0;top:150px;"/>	      			
+	      		 </div>
+	      		<div class="resize pos-ab del" style="top: 200px;width: 56px;height: 56px;top: 820px;"></div>
+	      	</div>
+     </section>
+    <div  style="width: 62px; z-index: 101; bottom: 500px;right: 50px;" class="pos-ab handani hide"><img src="images/hand.png" class="" style="width: 62px; z-index: 101; bottom: 500px;right: 30px;"  /></div>
+
+</body>
+
+<script>
+			$(document).on('touchmove',function(e){
+			    e.preventDefault()
+			      	
+			})
+	        var w = $(window).width();
+			var h = $(window).height();
+			var scaleW = w / 750;
+			var scaleH = h / 1254;
+			$('body,html').css({
+				width: w,
+				height: h
+			})
+			var person = w/380;
+			var personH = -45*scaleW+'px';
+			var resizes = document.querySelectorAll('.resize');
+			var resizesN = document.querySelectorAll('.resizeN');
+			for(var j = 0; j < resizes.length; j++) {
+				resizes[j].style.width = parseInt(resizes[j].style.width) * scaleW + 'px';
+				resizes[j].style.height = parseInt(resizes[j].style.height) * scaleW + 'px';
+				resizes[j].style.bottom = parseInt(resizes[j].style.bottom) * scaleH + 'px';
+				resizes[j].style.left = parseInt(resizes[j].style.left) * scaleW + 'px';
+				resizes[j].style.top = parseInt(resizes[j].style.top) * scaleW + 'px';
+			}
+			for(var j = 0; j < resizesN.length; j++) {
+				resizesN[j].style.width = parseInt(resizesN[j].style.width) * scaleW + 'px';
+				resizesN[j].style.height = parseInt(resizesN[j].style.height) * scaleW + 'px';
+				resizesN[j].style.bottom = parseInt(resizesN[j].style.bottom) * scaleW + 'px';
+				resizesN[j].style.left = parseInt(resizesN[j].style.left) * scaleW + 'px';
+				resizesN[j].style.top = parseInt(resizesN[j].style.top) * scaleH + 'px';
+			}
+			$('body,html').css({
+				width: w,
+				height: h
+			})
+			function getHeight(se,para){
+				return $(se).css(para).substring(0,$(se).css(para).length-2);
+			}
+			function getScale(n){
+				return scaleW*n;
+			}
+			var style = '.person-change{bottom: '+personH+';background: url(images/bike.png) no-repeat;transform-origin: 0 bottom;transform: scale('+person+');position: absolute;}'
+            $('head').append('<style>'+style+'</style>');
+            //轮播区域
+            var imgw = $('.lunbocon img').width() ;
+			var imgw  = 637
+			var  imgnum=2;
+			var jishunum=0;
+			var setklunbo;
+			function setinterval(){
+						 setklunbo = setInterval(function(){
+					    	jishunum++;
+							lunboF()
+						},2000)
+						return setklunbo;
+			}
+			function lunboF(){
+						   
+					    	if(jishunum<imgnum){
+								$('.lefticon').show()
+							}else{
+								jishunum=0;
+									$('.lefticon').hide()
+							}
+							 if(jishunum==0){
+					    			$('.lefticon').hide()
+					    		}
+						    if(jishunum==imgnum-1){
+						    	$('.righticon').hide()
+						    }else{
+						    	$('.righticon').show()
+						    }
+						$('.lunbocon').animate({left:-getScale(637)*jishunum})
+						
+			}
+	     	$('.cloudT').one('webkitAnimationEnd',function(){
+			// bottom 根据 骑车人的高度计算  瓶子 是否持续降落
+		  	$(".product_box").hide();
+			 	setTimeout(function(){
+			 	$('.person-change').addClass('changebikeA');
+			 	$('.changebikeA').on('webkitAnimationEnd',function(){
+			 	//第一个蒙版
+			 	  $('.lunbocon').css({width:imgw*imgnum*637+'px'});
+			 	$('#mengbanCon').show();
+			 	setinterval();
+			 	$('.lefticon').on('click',function(){
+					 clearInterval(setklunbo)
+					  jishunum--;
+					 lunboF();
+				})
+				$('.righticon').on('click',function(){
+					 clearInterval(setklunbo)
+					 jishunum++;
+					 lunboF();
+							
+				})
+			 	
+			 	})
+			 },200)
+	})
+	$(function(){
+		window.startFlag = 0;
+		$('.start').one('click',function(){
+		$('#tips').remove();
+		 $('.earth-sec').addClass('earth');
+		 $('.plane-sec').addClass('plane');
+		 startFlag=1;
+		})
+
+		$('.plane-sec').on('webkitAnimationEnd',function(){
+			$('.plane').hide();
+			$('.plane_box').addClass('move2');
+			$('.product_box').addClass('product_boxN');
+				$('.earth').fadeOut(500,function(){
+				$('.start').hide();
+				$('.cloudT').show();
+			});
+			
+		})
+		$('.del').css({'line-height':scaleW*30+'px'})
+			
+	    $('.del').one('click',function(){
+	    	clearInterval(setklunbo);
+	    	$(this).parents('section').hide();
+	    	//继续骑行1
+	    		$('.handani').show();
+	    	$('.handani').one('click',function(){
+	    		$(this).hide();
+	    		$("#personChange").removeClass('changebikeA').addClass('ridebikeA');
+		    	setTimeout(function(){
+		    		$('.door2').animate({left:300*scaleW+'px'},800,'linear',function(){
+		    	    //第2个蒙版		    	    
+		    		$('.mengbanCon').show();
+		    			$('#personChange').removeClass('ridebikeA');
+		    			$('.del').one('click',function(){
+		    				$('.mengbanCon').hide();
+		    				clearInterval(setklunbo);
+		    				//继续骑行2
+		    				$('.handani').show();
+		    				$('.handani').one('click',function(){
+		    					$(this).hide();
+			    				$('#personChange').addClass('ridebikeA');
+			    				$('.door2').animate({left:-750*scaleW+'px'},3000,'linear',function(){
+    						    		$('.park').css({bottom:getHeight('#road','height')+'px'});
+							    		$('.rideyizi').addClass('ride-speed-yizi');
+			    				})
+		    				})
+		    				
+		    			})
+		    		})
+		    		
+		    	},5500)
+	    		
+	    	})
+	    	
+	    })
+
+	    $('.rideyizi').one('webkitAnimationEnd',function(){
+
+			$('.game2').animate({left:400*scaleW+'px'},1000,'linear',function(){
+				//第3个蒙版				    
+				    $('.mengbanCon').show();
+	    			$('#personChange').removeClass('ridebikeA');
+	    			$('.del').one('click',function(){
+	    				clearInterval(setklunbo)
+	    				$('.mengbanCon').hide();
+	    				//继续骑行3
+	    				$('.handani').show();
+	    				$('.handani').one('click',function(){
+	    					$(this).hide();
+		    				$('#personChange').addClass('ridebikeA');
+		    				$('.game2').animate({left:-1498*scaleW+'px'},4000,'linear',function(){
+		    					$('.park').show().addClass('ride-speed-parkA');
+		    				})
+	    				})
+	    				
+	    			})
+		     })
+		})
+	    $('.park').one('webkitAnimationEnd',function(){
+	    	       $('.park').addClass('ride-speed-parkB');
+	    			$('.door4').animate({left:300*scaleW+'px'},450,'linear',function(){
+	    			   //第4个蒙版
+	    			    $('.mengbanCon').show();
+	    			    $('#personChange').addClass('paused');
+	    			    $('.del').one('click',function(){
+	    			    	$('.mengbanCon').hide();
+	    			    	//继续骑行4
+	    			    	$('.handani').show();
+	    			    	$('.handani').one('click',function(){
+	    			    		$(this).hide();
+	    			    		 $('#personChange').removeClass('paused').addClass('running');
+		    			    	$('.door4').animate({left:-750*scaleW+'px'},1000,'linear',function(){
+		    						 $('#personChange').addClass('paused');
+		    						 		    						 
+		    				    })
+	    			    	})
+	    			    })
+	    			});
+	     })
+	})
+</script>
+</html>

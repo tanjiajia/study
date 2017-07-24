@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>进度条</title>
+		<meta name='viewport' content='width=device-width, initial-scale=0.5, maximum-scale=0.5,minimum-scale=0.5,user-scalable=no' />
+		<script type="text/javascript" src="js/jquery-1.9.1-min.js"></script>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			section{height: 100%;width: 100%;position: relative;}
+			
+			.pos-A{
+				position: absolute;
+			}
+			.middle {
+				transform: translate(-50%, -50%);
+				-webkit-transform: translate(-50%, -50%);
+			}
+			
+			.center {
+				margin-left: 50%;
+			}
+	
+			/*轮播*/
+			#mengban{
+		 		margin: 20% auto;
+		 		text-align: center;
+		 		
+		 	}
+		 	.mengbanCon{
+		 		width: 100%;
+		 		height: 100%;
+		 		background: rgba(0,0,0,0.5);
+		 		top: 0;
+		 		left: 0;
+		 		z-index: 999;
+		 		position: absolute !important;
+		 	}
+		 	.userpic{
+		 		border-radius: 5px;
+		 		overflow: hidden;
+		 	}
+		 	
+		 	li{
+		 		list-style-type: none;
+		 		float: left;
+		 	}
+		 	.lunbocon{
+		 		position: relative;
+		 	}
+		 	.del{
+		 		margin-left: 50%;
+		 		-webkit-transform: translateX(-50%);
+		 		background: url(images/del.png) no-repeat;
+		 		background-size: contain;
+		 	}
+		 	.pos-ab{
+		 		position: absolute;
+		 	}
+		</style>
+	</head>
+	<body>
+		
+		<!--轮播-->
+		<section id="mengbanCon" class="hide mengbanCon">
+	      	<div id="mengban">
+	      		 <img src="images/mengbanimg4.png" class="pos-ab resize mengbanbg" style="width: 750px;height: 600px;left: 0;"/>
+	      		 <div  class="pos-ab resize userpic" style="width: 637px;height: 409px;left: 58px;top:308px;">
+	      		 	<ul class="lunbocon resize" style="">
+	      		 		<li><img src="images/userpic01.png" class="resize userpic" style="width: 637px;left: 58px;top:308px;"/></li>
+	      		 		<li><img src="images/userpic02.png" class="resize userpic" style="width: 637px;left: 58px;top:308px;"/></li>
+	      		 		<li><img src="" class="resize userpic hide" style="width: 637px;left: 58px;top:308px;"/></li>
+	      		 		<li><img src="" class="resize userpic hide" style="width: 637px;left: 58px;top:308px;"/></li>
+	      		 	</ul>
+	      		 	<img src="images/left.png"  class="lefticon resize pos-ab" style="display: none;width: 50px;left:-1px;top:150px;"/>
+	      		 	<img src="images/right.png"  class="righticon resize pos-ab" style="display: block;width: 50px;right: 0;top:150px;"/>
+	      		 	
+	      		 </div>
+	      		<div class="resize pos-ab del" style="top: 200px;width: 56px;height: 56px;top: 820px;"></div>
+	      	</div>
+    	</section>
+    	<script type="text/javascript">
+    		// 自适应
+			$(document).on('touchmove',function(e){
+				e.preventDefault()
+			})
+			var w = $(window).width();
+			var h = $(window).height();
+			var scaleW = w / 750;
+			var scaleH = h / 1254;
+			$('body,html').css({
+				width: w,
+				height: h
+			})
+			function getHeight(se,para){
+				return $(se).css(para).substring(0,$(se).css(para).length-2);
+			}
+			function getScale(n){
+				return scaleW*n;
+			}
+			var resizes = document.querySelectorAll('.resize');
+			var resizesN = document.querySelectorAll('.resizeN');
+			for(var j = 0; j < resizes.length; j++) {
+				resizes[j].style.width = parseInt(resizes[j].style.width) * scaleW + 'px';
+				resizes[j].style.height = parseInt(resizes[j].style.height) * scaleW + 'px';
+				resizes[j].style.bottom = parseInt(resizes[j].style.bottom) * scaleH + 'px';
+				resizes[j].style.left = parseInt(resizes[j].style.left) * scaleW + 'px';
+				resizes[j].style.top = parseInt(resizes[j].style.top) * scaleW + 'px';
+			}
+			for(var j = 0; j < resizesN.length; j++) {
+				resizesN[j].style.width = parseInt(resizesN[j].style.width) * scaleW + 'px';
+				resizesN[j].style.height = parseInt(resizesN[j].style.height) * scaleW + 'px';
+				resizesN[j].style.bottom = parseInt(resizesN[j].style.bottom) * scaleW + 'px';
+				resizesN[j].style.left = parseInt(resizesN[j].style.left) * scaleW + 'px';
+				resizesN[j].style.top = parseInt(resizesN[j].style.top) * scaleH + 'px';
+			}
+
+		</script>
+    	<script type="text/javascript">
+    		//轮播区域
+            var imgw = $('.lunbocon img').width() ;
+			var imgw  = 637
+			var  imgnum=2;
+			var jishunum=0;
+			var setklunbo;
+			function setinterval(){
+				setklunbo = setInterval(function(){
+			    	jishunum++;
+					lunboF()
+				},2000)
+				return setklunbo;
+			}
+			function lunboF(){
+						   
+		    	if(jishunum<imgnum){
+					$('.lefticon').show()
+				}else{
+					jishunum=0;
+						$('.lefticon').hide()
+				}
+				 if(jishunum==0){
+		    			$('.lefticon').hide()
+		    		}
+			    if(jishunum==imgnum-1){
+			    	$('.righticon').hide()
+			    }else{
+			    	$('.righticon').show()
+			    }
+				$('.lunbocon').animate({left:-getScale(637)*jishunum})
+						
+			}
+			setinterval();
+			
+    	    imgnum=4;
+    	    jishunum=0;
+    	    $('.lunbocon').css({width:imgw*imgnum*637+'px',left:0});
+    	    $('.mengbanbg').attr( 'src','images/mengbanimg3.png');
+    	    $('.lunbocon li img').show();
+    	    $('.righticon').show();
+    	    $('.lunbocon li:eq(0) img').attr('src','images/userpic03.png');
+    	    $('.lunbocon li:eq(1) img').attr('src','images/userpic07.png');
+    	    $('.lunbocon li:eq(2) img').attr('src','images/userpic08.png');
+    	    $('.lunbocon li:eq(3) img').attr('src','images/userpic09.png');
+			$('.lefticon').on('click',function(){
+				clearInterval(setklunbo)
+				  jishunum--;
+				 lunboF();
+				 setinterval();
+			})
+			$('.righticon').on('click',function(){
+		 		clearInterval(setklunbo)
+		 		jishunum++;
+		 		lunboF();
+		 		setinterval();
+				
+			})
+			$('.del').one('click',function(){
+				$('.mengbanCon').hide();
+				clearInterval(setklunbo);
+			});
+    	</script>
+		
+		<script type="text/javascript">
+			// 当rideyizi 动画执行结束时
+			$('.rideyizi').one('webkitAnimationEnd',function(){
+				$('.game1').animate({left:300*scaleW+'px'},1000,'linear',function(){
+			    })
+				$('.game2').animate({left:400*scaleW+'px'},1000,'linear',function(){
+						//第3个蒙版
+					    $('.lunbocon').css({width:getScale(1274)+'px',left:0});
+			    	    
+			     })
+			})
+		</script>
+	</body>
+</html>
+
+

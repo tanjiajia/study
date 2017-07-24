@@ -1,0 +1,64 @@
+{
+				"success": true,
+				"data": [{
+					"Id": 3,
+					"Name": "以下哪项说法是正确的:",
+					"QuestionItems": "[{\"option\":\"A\",\"item\":\"2型糖尿病患者不需要测血糖\",\"imgSrc\":\"Blue\"},{\"option\":\"B\",\"item\":\"没有自觉症状就不用测血糖\",\"imgSrc\":\"Blue\"},{\"option\":\"C\",\"item\":\"在医院测血糖就够了，不需要在家自测\",\"imgSrc\":\"Blue\"},{\"option\":\"D\",\"item\":\"空腹血糖”不等于“饥饿血糖\",\"imgSrc\":\"Blue\"}]",
+					"Answer": "D",
+					"CreateTime": "2016-08-27",
+					"QuestionStore": {
+						"Id": 1,
+						"Name": "百日稳糖测试题1",
+						"CreateTime": "2016-08-27",
+						"Active": true
+					}
+				}, {
+					"Id": 4,
+					"Name": "糖尿病管理的\"五驾马车\"不包含以下哪一项:",
+					"QuestionItems": "[{\"option\":\"A\",\"item\":\"饮食控制\",\"imgSrc\":\"Blue\"},{\"option\":\"B\",\"item\":\"运动疗法\",\"imgSrc\":\"Blue\"},{\"option\":\"C\",\"item\":\"药物治疗\",\"imgSrc\":\"Blue\"},{\"option\":\"D\",\"item\":\"推拿理疗\",\"imgSrc\":\"Blue\"}]",
+					"Answer": "D",
+					"CreateTime": "2016-08-27",
+					"QuestionStore": {
+						"Id": 1,
+						"Name": "百日稳糖测试题1",
+						"CreateTime": "2016-08-27",
+						"Active": true
+					}
+				}, {
+					"Id": 6,
+					"Name": "以下哪一项不属于“七点血糖”范畴 :",
+					"QuestionItems": "[{\"option\":\"A\",\"item\":\"空腹血糖\",\"imgSrc\":\"Blue\"},{\"option\":\"B\",\"item\":\"随机血糖\",\"imgSrc\":\"Blue\"},{\"option\":\"C\",\"item\":\"午餐后血糖\",\"imgSrc\":\"Blue\"},{\"option\":\"D\",\"item\":\"睡前血糖\",\"imgSrc\":\"Blue\"}]",
+					"Answer": "B",
+					"CreateTime": "2016-08-27",
+					"QuestionStore": {
+						"Id": 1,
+						"Name": "百日稳糖测试题1",
+						"CreateTime": "2016-08-27",
+						"Active": true
+					}
+				}, {
+					"Id": 7,
+					"Name": "尿糖检测可以用于糖尿病诊断 :",
+					"QuestionItems": "[{\"option\":\"A\",\"item\":\"正确\",\"imgSrc\":\"Blue\"},{\"option\":\"B\",\"item\":\"错误\",\"imgSrc\":\"Blue\"}]",
+					"Answer": "B",
+					"CreateTime": "2016-08-27",
+					"QuestionStore": {
+						"Id": 1,
+						"Name": "百日稳糖测试题1",
+						"CreateTime": "2016-08-27",
+						"Active": true
+					}
+				}, {
+					"Id": 10,
+					"Name": "HbA1C（糖化血红蛋白）可以反映多长时间内的血糖水平 :",
+					"QuestionItems": "[{\"option\":\"A\",\"item\":\"2-3个月\",\"imgSrc\":\"Blue\"},{\"option\":\"B\",\"item\":\"3天\",\"imgSrc\":\"Blue\"},{\"option\":\"C\",\"item\":\"1周\",\"imgSrc\":\"Blue\"},{\"option\":\"D\",\"item\":\"3年内\",\"imgSrc\":\"Blue\"}]",
+					"Answer": "A",
+					"CreateTime": "2016-08-27",
+					"QuestionStore": {
+						"Id": 1,
+						"Name": "百日稳糖测试题1",
+						"CreateTime": "2016-08-27",
+						"Active": true
+					}
+				}]
+			}

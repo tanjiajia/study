@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="">
+     <!--所有 页面 均需获得用户 openid-->
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<meta name="keywords" content="恒寿堂">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>体质测试</title>
+		<link href="./css/tz.css" rel="stylesheet">
+	   <script src="js/jquery-1.11.0.min.js"></script>
+	   
+	</head>
+
+	<body>
+		<!--
+      	时间：2016-09-12
+      	描述： 选择性别
+      -->
+		<div class="sex-page" id="sexPage" style="display:">
+			<img src="img/man2.png" id="man" />
+			<img src="img/woman2.png" id="woman" />
+		</div>
+
+		<form action="" id="questionForm" method="post" style="display:none">
+
+			<div class="container question-desc">
+				<ul>
+					<li>
+						本测试根据《中医体质分类与判定》的体质判定标准研发而成，该文件是我国第一部指导和规范中医体质研究及应用文件，为体质辨识及与中医体质相关疾病的防治、养生保健、健康管理提供依据，使体质分类科学化、规范化。
+					</li>
+
+				</ul>
+			</div>
+
+			<div class="container question-container" id="questions">
+				<div class="section_header_placeholder">
+					<div class="section_header ">
+						<h2>根据最近三个月的体验和感觉回答</h2>
+					</div>
+				</div>
+			</div>
+
+			<div class="container option-container">
+				<input type="submit" class="hidden-button">
+				<a href="javascript:void(0)" class="submit" id="submitButton"><img src="./img/submit_bg.png"></a>
+			</div>
+
+	
+		</form>
+        
+        <script type="text/javascript" src="js/zTouch.js" ></script>
+
+		<script>
+		
+			var info = {};
+
+			function makeQuestionHtml(questionIndex, questiontagId, questionTitle, allQuestionCount, optionNum, b1, b2, b3, b4, b5) {
+				if(optionNum == 2) {
+					// var optionHtml = '<ul class="row"><li class="col-xs-6" value="1">男</li><li class="col-xs-6" value="2">女</li></ul><input name="question['+questiontagId+']" type="hidden"/>';
+				} else {
+
+					var optionHtml = '<ul class="row"><li class="col-xs-2-5" value="1"><div>' + b1 + '</div></li><li class="col-xs-2-5" value="2"><div>' + b2 + '</div></li><li class="col-xs-2-5" value="3"><div>' + b3 + '</div></li><li class="col-xs-2-5" value="4"><div>' + b4 + '</div></li><li class="col-xs-2-5" value="5"><div>' + b5 + '</div></li></ul><input name="question[' + questiontagId + ']"  type="hidden"/>';
+				};
+
+				var html = '<div class="question disabled" question-no="' + questionIndex + '" question-tag="' + questiontagId + '"><h3><span class="question-no"><b>' + questionIndex + '</b>/' + allQuestionCount + '</span><span class="real-title">' + questionTitle + '</span></h3><div class="question-options">' + optionHtml + '</div></div>';
+
+				return html;
+			}
+
+			function addSectionHeader(title, no, desc, extraTag) {
+				return '<div class="container"><div class="title-container"><div><span class="ques-title">' + title + '</span><span class="ques-title-no">' + no + '</span></div><div class="title-desc">' + desc + '</div></div></div>';
+
+			}
+
+			function in_array(needle, haystack) {
+				for(var i in haystack) {
+					if(haystack[i] == needle) return true;
+				}
+				return false;
+			}
+
+			function setQuestionVisibilityByTags(tags, isShow) {
+				$(tags).each(function(i) {
+					if(isShow) {
+						$('div[question-tag="' + tags[i] + '"]').show();
+					} else {
+						$('div[question-tag="' + tags[i] + '"]').find('input').removeAttr('checked');
+						$('div[question-tag="' + tags[i] + '"]').find('li').removeClass('active');
+						$('div[question-tag="' + tags[i] + '"]').hide().attr('class', 'question disabled');
+					}
+				});
+			}
+
+			$(function() {
+				$('#man,#woman').on('tap',function(e) {
+					$(this).off('tap');
+					if(e.target.id === "man") {
+						info.sex = '男';
+						var text = '男？';
+					} else {
+						info.sex = '女';
+						var text = '女？'
+					}
+					setTimeout(function() {
+						$('#sexPage').hide();
+						$('#questionForm').show();
+						$('div[question-no="3"]').find('h3').find('.real-title').html(text);
+						minimumOffset = $('.section_header').first().offset().top;
+					}, 300)
+				});
+var data = [{
+				"tag": "您皮肤或口唇干吗？",
+				"tagId": "1"
+			}, {
+				"tag": "您口唇的颜色比一般人红吗？",
+				"tagId": "2"
+			}, {
+				"tag": "您面部两颧潮红或偏红吗？",
+				"tagId": "3"
+			}, {
+				"tag": "您有额部油脂分泌多的现象吗？",
+				"tagId": "4"
+			}, {
+				"tag": "您上眼睑比别人肿（上眼睑有轻微隆起的现象）吗？",
+				"tagId": "5"
+			}, {
+				"tag": "您平时痰多，特别是咽喉部总感到有痰堵着吗？",
+				"tagId": "6"
+			}, {
+				"tag": "您舌苔厚腻或有舌苔厚厚的感觉吗？",
+				"tagId": "7"
+			}, {
+				"tag": "请选择您的年龄",
+				"tagId": "8"
+			}]
+				var Questions = data;
+				QuestionTagsWithTwoOptions = $.parseJSON('["100"]');
+				QuestionTagForAge = "8";
+				QuestionTagsWithSepacilOptionName = $.parseJSON('["2","3","5"]');
+
+				currentQuestion = 1;
+				allQuestionNum = Questions.length;
+				
+				// 遍历题目数据
+				$(Questions).each(function(i) {
+					if(in_array(this.tagId, QuestionTagsWithTwoOptions)) {
+						
+						var questionHtml = makeQuestionHtml(i + 1, this.tagId, this.tag, allQuestionNum, 2);
+					} else {
+						if(this.tagId == QuestionTagForAge){
+							
+							var questionHtml = makeQuestionHtml(i + 1, this.tagId, this.tag, allQuestionNum, 4, '28以下', '28~35', '36~45', '46~60', '60以上');}
+						else if(in_array(this.tagId, QuestionTagsWithSepacilOptionName)){
+							var questionHtml = makeQuestionHtml(i + 1, this.tagId, this.tag, allQuestionNum, 4, '根本不', '有一点', '有些', '相当', '非常');}
+						else{
+							var questionHtml = makeQuestionHtml(i + 1, this.tagId, this.tag, allQuestionNum, 4, '没有', '很少', '有时', '经常', '总是');
+						}
+					}
+
+					if(i == 0) {
+						$('#questions').append(addSectionHeader('望诊', '(1-5题)', '主要观察形体、面色、舌体、舌苔，根据形色变化确定病位、病性。 小提示：可以拿面镜子对着判断会更准确哦。'));
+					}
+					if(i == 5) {
+						$('#questions').append(addSectionHeader('闻诊', '(6-8题)', '运用手和指端的感觉,对人体表某些部位进行触摸按压。'));
+					}
+					
+
+					// 此处 多次渲染 可 尝试 构建dom 模型 一次 渲染
+					$('#questions').append(questionHtml);
+
+				});
+
+				$('#questions').find('.question[question-no="1"]').removeClass('disabled');
+				$('#questions').find('.question[question-no="1"]').addClass('active');
+				$('#questions').find('.question[question-no="12"]').css({
+					'border': 0
+				});
+				
+				
+
+				//tap OPTION!
+				$(".question-options li").bind('tap', function() {
+					//控制题目显示状态
+					if($(this).parents('.question').attr('question-no') == currentQuestion) {
+
+						if(currentQuestion < allQuestionNum) {
+							$('#questions').find('[question-no="' + (currentQuestion + 1) + '"]').attr('class', 'question active');
+							var dis = $('#questions').find('[question-no="' + (currentQuestion + 1) + '"]').offset().top;
+							jQuery('body').animate({scrollTop:(dis-60)},300)
+							$(this).parents('.question').prev('.section_header').addClass('fixed');
+						};
+
+						currentQuestion++;
+					};
+
+					//操作选项
+					var thisTag = $(this).parents('.question').attr('question-tag');
+					$('input[name="question[' + thisTag + ']"]').attr("value", $(this).attr("value"));
+					
+					$(this).siblings('li').removeClass('active');
+					$(this).addClass('active');
+
+	
+				});
+
+
+
+				//提交，检测表单完成情况  
+				$('#submitButton').off('tap');
+				
+				$('#submitButton').on('tap',function() {
+					var alreadyTested = $('#questions').find('input[value]').length;
+					var isErrorComing = false;
+
+					//答题完成度检测
+					if(alreadyTested < allQuestionNum && !isErrorComing) {
+						if(alreadyTested == 0) {
+							$(window).scrollTop($('.question:first').offset().top);
+							alert('请先完成测试再提交！');
+						} else {
+							$(window).scrollTop($('#questions').find('.question[question-no="' + (currentQuestion - 1) + '"]').offset().top);
+							alert('你还有题目尚未回答！');
+						}
+						isErrorComing = true;
+					}
+
+					if(isErrorComing == true) {
+						return false;
+					}
+
+					//if everything is fine, submit the form.
+					var obj = $(".question-options ul .active");
+					length = obj.length;
+					var allValues = [];
+					var age = obj[60].value;
+					for(var i=0;i<length-1;i++){
+						allValues.push(obj[i].value);
+					}
+					info.values = allValues.toString();
+					info.age = age;
+					var tizhi = [ ];
+					console.log(info);
+					for(var j=0;j<tizhiType.length;j++){
+						tizhi.push(new TI(tizhiType[j],tizhiNo[j],tizhiQues[j],allValues))
+						 tizhi[j].init();
+					}
+		
+					
+				});
+				
+	            
+					//////////////    由于隐藏 导致       minimumOffset结果为0
+					maximumOffset = 600;
+
+				window.minimumOffset = $('.section_header').first().offset().top;
+				$(document).scroll(function(event) {
+					maximumOffset = $('.option-container').offset().top ;
+					
+					var currentScrollTop = $(this).scrollTop();
+					
+					if(currentScrollTop < minimumOffset || currentScrollTop > maximumOffset) {
+						$('.section_header').removeClass('fixed');
+					} else {
+						
+						$('.section_header').addClass('fixed');
+							
+						
+					}
+				});
+			});
+
+			
+		</script>
+	</body>

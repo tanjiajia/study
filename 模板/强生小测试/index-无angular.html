@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>血糖小测试</title>
+		<meta charset="utf-8">
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Cache-Control" content="no-cache">
+		<meta http-equiv="Expires" content="-1">
+		<meta name="viewport" content="width=640,user-scalable=no">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<meta content="telephone=no" name="format-detection">
+		<meta content="email=no" name="format-detection">
+		<link rel="stylesheet" href="css/swiper.min.css">
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/site.css">
+    	
+    	<style type="text/css">
+    		.question_list li{
+    			color: #D6D6D6;
+    			height: 60px;
+    		}
+    		.dn{
+    			display: none;
+    		}
+    		.question_list li .text,.question_list li .text,.question_list li .text, .question_list li .text, .question_list li .text {
+		        position: absolute;
+		        top: 0px;
+		        left: 0px;
+		        width: 500px;
+		        
+		        height: 100%;
+		        box-sizing: border-box;
+		        padding-top: 12px;
+		        margin-left: 98px;
+		        padding-left: 25px;
+		        padding-right: 50px;
+		        background: none;
+		        background-size: 100% 100%; 
+		        float: left;
+		        color: #000;
+		    }
+		    #MainSwiper .question_list li .text{
+		    	padding-top: 12px;
+		    	float: left;
+		    	background: url(images/questionName_blue.png) no-repeat;
+		    	background-size: 100% 100%;
+		    }
+		    #MainSwiper .question_list li .text.letter{
+		    	padding-left: 6px;
+		    	width: 20px;
+		    	color: #000;
+		    	background: none;
+		    }
+		    #MainSwiper .question_list li .text.correctBg{
+		    	background-image: url(images/questionName_red.png);
+		    }
+		    #MainSwiper .question_list li .text.errBg{
+		    	background-image: url(images/questionName_error.png);
+		    }
+		    #MainSwiper .question_list li .text.correctBg_Not{
+		    	background-image: url(images/questionName_ZQred.png);
+		    }
+		    .start{
+		    	  display: box;
+				  display: -webkit-box;
+				  box-orient: vertical;
+				  -webkit-box-orient: vertical;
+				  box-align: center;
+				  -webkit-box-align: center;
+				 font-size: 30px;
+		    }
+    	</style>
+	</head>
+
+	<body>
+
+		<div class="swiper-container swiper-container-vertical" id="MainSwiper">
+			<div class="swiper-wrapper ng-scope">
+				<div class="swiper-slide stop-swiping swiper-slide-active" id="p0" style="height: 1070px;">
+					<div class="content start" id="start" style="text-align: center;">
+						点击开始
+					</div>
+				</div>
+
+				<div class="swiper-slide stop-swiping swiper-slide-next" id="p1" style="height: 1070px;">
+					<div class="content question">
+						
+						<div class="questionName_box">
+							<div class="text title" id="title">
+								
+							</div>
+						</div>
+						<ul class="question_list" id="questionList">
+							<li class="dn" data-type="list">
+								
+								<div class="text answer" data-type="answer">
+									
+								</div>
+								<div class="text letter" data-type="letter">
+									
+								</div>
+							</li>
+						</ul>
+						<button class="NextquestionBtn"></button>
+					</div>
+				</div>
+				<div class="swiper-slide stop-swiping swiper-slide-next" id="p2" style="height: 1070px;">
+					<div class="content question">
+						
+						<div class="questionName_box">
+							<div class="text title" id="title01">
+								
+							</div>
+						</div>
+						<ul class="question_list" id="questionList01">
+							<li class="dn" data-type="list">
+								
+								<div class="text" data-type="answer">
+									
+								</div>
+								<div class="text letter" data-type="letter">
+									
+								</div>
+							</li>
+						</ul>
+						<button class=" NextquestionBtn"></button>
+					</div>
+				</div>
+				<div class="swiper-slide stop-swiping swiper-slide-next" id="p2" style="height: 1070px;">
+					<div class="content question">
+						
+						<div class="questionName_box">
+							<div class="text title" id="title02">
+								
+							</div>
+						</div>
+						<ul class="question_list" id="questionList02">
+							<li class="dn" data-type="list">
+								
+								<div class="text" data-type="answer">
+									
+								</div>
+								<div class="text letter" data-type="letter">
+									
+								</div>
+							</li>
+						</ul>
+						<button class=" NextquestionBtn"></button>
+					</div>
+				</div>
+				
+				<div class="swiper-slide stop-swiping swiper-slide-next" id="p2" style="height: 1070px;">
+					<div class="content start">
+						<div class="result" style="color: #000;">
+							
+						</div>
+						
+					</div>
+				</div>
+				
+			
+			</div>
+		</div>
+                                             
+		<script src="lib/jquery.js"></script>
+		<script src="lib/swiper.min.js"></script>
+
+		<script src="lib/index.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/testData2.js" type="text/javascript" charset="utf-8"></script>
+
+
+</body></html>

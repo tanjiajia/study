@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>进度条03</title>
+		<meta name='viewport' content='width=device-width, initial-scale=0.5, maximum-scale=0.5,minimum-scale=0.5,user-scalable=no' />
+		<link rel="stylesheet" type="text/css" href="css/loaders.css"/>
+		<script type="text/javascript" src="js/jquery-1.9.1-min.js"></script>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			body{
+				background: #CCCCBF;
+			}
+			
+			.loading{
+				margin: 150px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="loading" id="loading">
+			<div class="ball-spin-fade-loader">
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+		</div>
+	
+		<div class="loading2" id="loading2">
+			<div class="line-scale-pulse-out-rapid">
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>			
+		</div>
+	
+    
+    	<script>
+	    	document.onreadystatechange = subSomething; //当页面加载状态改变的时候执行这个方法. 
+	    	imgs = [
+				'https://img.alicdn.com/imgextra/i1/3277004661/TB2QUB1sHFkpuFjy1XcXXclapXa_!!3277004661.jpg',
+				'https://img.alicdn.com/imgextra/i4/3277004661/TB2vjKRwbBnpuFjSZFGXXX51pXa_!!3277004661.jpg',
+				'https://img.alicdn.com/imgextra/i1/3277004661/TB2IpfOwhxmpuFjSZFNXXXrRXXa_!!3277004661.jpg',
+				'https://img.alicdn.com/imgextra/i4/3277004661/TB2Xu4ksHXlpuFjy1zbXXb_qpXa_!!3277004661.jpg',			
+				'https://img.alicdn.com/imgextra/i4/3277004661/TB2HmYYwipnpuFjSZFkXXc4ZpXa_!!3277004661.jpg',
+				'https://img.alicdn.com/imgextra/i1/3277004661/TB2KaKHwdBopuFjSZPcXXc9EpXa_!!3277004661.jpg',
+				'https://img.alicdn.com/imgextra/i3/3277004661/TB2TTIRsB0kpuFjy1zdXXXuUVXa_!!3277004661.jpg',
+				'https://img.alicdn.com/imgextra/i3/3277004661/TB2NuvnwctnpuFjSZFKXXalFFXa_!!3277004661.jpg'
+			]
+				
+			function subSomething() {
+				if (document.readyState == 'complete') {
+					var isLoad = 0;
+					for (var i = 0; i < imgs.length; i++) {
+						var _img = new Image();
+						_img.src = imgs[i];
+						_img.onload = function () {
+							isLoad++;
+						}
+					}
+			
+					var k = setInterval(function () {
+						console.log(isLoad);
+						if (isLoad == imgs.length) {
+							document.getElementById('loading').className += ' hide';
+							document.getElementById('loading2').className += ' hide';
+							console.log(document.getElementById('bgsound'));
+							clearInterval(k);
+						}
+					}, 500);
+			
+				}
+			
+			}
+
+		</script>
+	</body>
+</html>
+
+

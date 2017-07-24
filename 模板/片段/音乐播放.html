@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.music_icon {
+				position: fixed;
+				display: none;
+				top: 0.80rem;
+				left: 16.5rem;
+				z-index: 99999999;
+				width: 1.7rem;
+			}
+		</style>
+		<script type="text/javascript" src="js/jquery-1.9.1-min.js" ></script>
+		<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	</head>
+	<body>
+		<!--1-->
+		<div id="audiocontainer"></div>
+		<script type="text/javascript" src="js/common.js" ></script>
+		
+		<!--2-->
+		<img class="music_icon" id="music_icon_open" style="display: block;" src="images/music_open.png"> 
+		<img class="music_icon" id="music_icon_close" src="images/music_close.png">
+		<audio src="video/bg_music.mp3" id="audio" loop autoplay></audio>
+		
+		<script>
+			//点击播放和暂停
+			var audio = document.getElementById('audio');	
+			$('.music_icon').click(function() {
+				if (audio.paused == true) {
+					$('#music_icon_open').show();
+					$('#music_icon_close').hide();
+					audio.play();
+				} else {
+					$('#music_icon_open').hide();
+					$('#music_icon_close').show();
+					audio.pause();
+				}
+			})
+			
+			//兼容部分ios微信上无法自动播放
+			
+			// 方法1			
+			
+			function audioAutoPlay(id){
+				var audio = document.getElementById(id);
+				audio.play();
+			    document.addEventListener("WeixinJSBridgeReady", function () {
+			            audio.play();
+			    }, false);
+			    document.addEventListener('YixinJSBridgeReady', function() {
+			    	audio.play();
+			    }, false);
+			}
+			audioAutoPlay('audio');
+			
+			
+			// 方法二 -- 引入微信js
+			function autoPlayAudio() {
+				wx.config({
+					// 配置信息, 即使不正确也能使用 wx.ready
+					debug: false,
+					appId: '',
+					timestamp: 1,
+					nonceStr: '',
+					signature: '',
+					jsApiList: []
+				});
+				wx.ready(function () {
+					document.getElementById('bgsound').play();
+				});
+			};
+			
+			autoPlayAudio();
+		
+		</script>
+	</body>
+</html>

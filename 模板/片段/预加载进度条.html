@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>进度条01</title>
+		<meta name='viewport' content='width=device-width, initial-scale=0.5, maximum-scale=0.5,minimum-scale=0.5,user-scalable=no' />
+		<script type="text/javascript" src="js/jquery-1.9.1-min.js"></script>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			body{
+				background: #CCCCBF;
+			}
+			section{height: 100%;width: 100%;position: relative;}
+			.progress {
+				width: 100%;
+				margin:0 auto;
+				color: #fff;
+				text-align: center;
+				bottom: 200px;
+				font-size: 22px;
+			}
+			.pos-A{
+				position: absolute;
+			}
+			.middle {
+				transform: translate(-50%, -50%);
+				-webkit-transform: translate(-50%, -50%);
+			}
+			
+			.center {
+				margin-left: 50%;
+			}
+			
+			.canvascon {
+				position: absolute;
+				background: #28A5FF;
+				width: 100%;
+				height: 100%;
+				z-index: 999;
+			}
+		</style>
+	</head>
+	<body>
+		<section class="canvascon" style="position: relative;">
+			<canvas id="c" class="resize middle center" style="position: absolute;z-index: 3;width: 164px;height: 265px;top: 500px;" ></canvas>
+			<img id="pingzi" src="images/pingzi.png" class="resize middle center" style="display:none;position: absolute;z-index: 1;width: 160px;height: 265px;top: 500px;" />
+		    
+		    <div class="progress pos-A"></div>
+	    </section>
+    
+    <script>
+    	
+			$(document).on('touchmove',function(e){
+		      	e.preventDefault()
+		      	
+		    })
+	        var w = $(window).width();
+			var h = $(window).height();
+			var scaleW = w / 750;
+			var scaleH = h / 1254;
+			$('body,html').css({
+				width: w,
+				height: h
+			})
+			var c = document.getElementById("c");
+			var context = c.getContext("2d");
+			//获取canvas宽度
+            var  cwT = $(c).css('width');
+            var chT =  $(c).css('height');
+            var cw = cwT.substring(0,cwT.length-2);
+            var ch= chT.substring(0,chT.length-2);
+			context.fillStyle = "#28A5FF";
+			context.strokeStyle = "#28A5FF";
+			//画曲线 sin曲线
+			var i = 0;
+			var progressN;
+			zhengxian();
+			$('#pingzi').show();
+			var setId=setInterval(function() {
+				 
+				zhengxian(progressN);
+				
+			}, 32)
+       
+			function zhengxian(h) {
+				context.clearRect(0, 0, 1000, ch);
+				context.beginPath();
+				context.moveTo(0, 0);
+				if(i>100)i=0;
+				else i+=0.05;
+				var ping
+				if(h)ping = parseInt(h*160) ;
+				else ping = 10;
+				var x = 0;
+				for(var x = 0; x < 300; x+=2) {
+						context.lineTo(x, -3 * Math.cos((x * 1) * Math.PI / 180-i)+ping)
+				}
+				context.lineTo(300, 300);
+				context.lineTo(0, 300);
+				context.fill();
+			}
+//			页面中所需图片
+			var imgs = [
+				'https://img.alicdn.com/imgextra/i1/3277004661/TB2QUB1sHFkpuFjy1XcXXclapXa_!!3277004661.jpg',
+				'https://img.alicdn.com/imgextra/i4/3277004661/TB2vjKRwbBnpuFjSZFGXXX51pXa_!!3277004661.jpg',
+				'https://img.alicdn.com/imgextra/i1/3277004661/TB2IpfOwhxmpuFjSZFNXXXrRXXa_!!3277004661.jpg',
+				'https://img.alicdn.com/imgextra/i4/3277004661/TB2Xu4ksHXlpuFjy1zbXXb_qpXa_!!3277004661.jpg',			
+				'https://img.alicdn.com/imgextra/i4/3277004661/TB2HmYYwipnpuFjSZFkXXc4ZpXa_!!3277004661.jpg',
+				'https://img.alicdn.com/imgextra/i1/3277004661/TB2KaKHwdBopuFjSZPcXXc9EpXa_!!3277004661.jpg',
+				'https://img.alicdn.com/imgextra/i3/3277004661/TB2TTIRsB0kpuFjy1zdXXXuUVXa_!!3277004661.jpg',
+				'https://img.alicdn.com/imgextra/i3/3277004661/TB2NuvnwctnpuFjSZFKXXalFFXa_!!3277004661.jpg'
+				]
+			var length = imgs.length;
+//			var imgBath = 'images/';
+			var imgj = 0;
+			function addImg(src) {
+
+				for(var i = 0; i < src.length; i++) {
+					var Img = new Image(); //定义Image对象的src: a.src=”xxx.gif”;这样做就相当于给浏览器缓存了一张图片。
+//					Img.src = imgBath+imgs[i];
+					Img.src = imgs[i];
+					Img.onload = function() {
+							imgj++;
+						   progressN = imgj / length ;
+					 	var progress = parseInt(progressN*100) + '%';
+						$('.progress').text(progress)
+						if(imgj == length) {
+							clearInterval(setId);
+							preloadF();
+						}
+					}
+				}
+			}
+			addImg(imgs)
+			// 进度条结束后执行函数
+			function preloadF() {
+						$('.canvascon').hide(0,function(){
+									$('body').append('<div id="tips" style="font-size:30px ;position: fixed;z-index: 999;right: 60px;top: 45%;background: rgba(0,0,0,0.5);color: #fff;padding: 10px;border-radius: 5px;">   ← 点击起航 </div>')
+						});
+			}
+
+		</script>
+	</body>
+</html>
+
+

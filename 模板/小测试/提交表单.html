@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="">
+	<head>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	    <title></title>
+	    <link href="./css/tz.css" rel="stylesheet">
+	    <style type="text/css">
+		    body {background: #FFF !important;overflow: ;}
+		    .small-tip { font-size: 14px; }
+	    </style>
+  	</head>
+  	<body>
+		<!--第一种-->
+  		<div class="row result-form ">			
+			<form class="hf-form" action="xxx.php" method="POST" accept-charset="utf-8" id="regForm">
+				<input type="email" class="form-control" value="" name="email" id="email" placeholder="请输入您的微信号">
+				<button href="javascript:void(0)" class="submit" type="submit" id="getWX" style="outline: none;border: 0;">发送</button>
+			</form>	  
+		</div>
+
+		<!--第二种 利用ajax-->
+		
+		<div class="row result-form ">			
+			<form class="hf-form" action="" method="POST" accept-charset="utf-8" id="regForm">
+				<input type="email" class="form-control" value="" name="email" id="email" placeholder="请输入您的微信号">
+				<a href="javascript:void(0)" class="submit" id="getWX" >发送</a>
+			</form>	  
+		</div>
+
+		<script src="./js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript">
+			$("#getWX").submit(function(e) {
+				$.post('server.php', $('#theForm').serialize());
+				
+				// 或者
+				
+			    var url = "path/to/your/script.php"; // the script where you handle the form input.
+				
+			    $.ajax({
+			           type: "POST",
+			           url: url,
+			           data: $("#regForm").serialize(), // serializes the form's elements.
+			           success: function(data)
+			           {
+			               alert(data); // show response from the php script.
+			           }
+			         });
+			
+			    e.preventDefault(); // avoid to execute the actual submit of the form.
+			});
+		
+		</script>
+
+</body>
+</html>
