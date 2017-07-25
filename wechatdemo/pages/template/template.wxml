@@ -1,0 +1,16 @@
+<!--template.wxml-->
+<text>template.wxml</text>
+
+<import src='../common/common.wxml' />
+<!--<template is="staffName" data="{{firstName: 'Hulk', lastName: 'Hu'}}"></template>
+<template is="staffName" data="{{...staffB}}"></template>
+<template is="staffName" data="{{...staffC}}"></template>-->
+<template is="msgItem" data="{{...item}}"/>
+
+<view class="classname" wx:for="{{[1, 2, 3, 4, 5]}}" wx:key='1'>
+    <template is="{{item % 2 == 0 ? 'even' : 'odd'}}"/>
+</view>
+
+<block wx:for="{{courseList}}">
+    <template is="{{index%2 === 0 ? 'courseLeft' : 'courseRight'}}" data="{{...item}}"></template>
+</block>

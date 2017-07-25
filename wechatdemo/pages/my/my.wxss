@@ -1,0 +1,145 @@
+/* my.wxss */
+@import "../../style/common.wxss";
+.flex-wrp{
+  display:flex;
+  flex-flow:row wrap;
+  justify-content:center; 
+  align-items: center; 
+}
+.contain,html{
+  width: 100%;
+  height: 100%;
+  background: #f8f8f8;
+}
+.container{
+  padding: 0;
+  background: #fff;
+
+}
+.ff{
+  font-family: 微软雅黑;
+}
+
+.flex-item1{
+  width:148rpx;
+}
+.flex-item2{
+  width:602rpx;
+  display: flex;
+  justify-content:center; 
+}
+.mymes{
+  width: 100%;
+  height: 160rpx;
+  border-top: #eaeaea solid 2px;
+  border-bottom: #eaeaea solid 2px;
+}
+.my-avatar {
+  width: 66rpx;
+  height: 88rpx;
+  border-radius: 60rpx; 
+}
+.my-title{
+  color: #000;
+  font-size: 34rpx;
+}
+.my-des{
+  color: #9b9b9b;
+  font-size: 31rpx;
+}
+.ml30{
+   margin-left: 30rpx;
+}
+.box2{
+  border-bottom: #eaeaea solid 2px;
+}
+.my-about{
+  width: 720rpx;
+  height: 94rpx;
+ 
+  border-bottom: #eaeaea solid 2px;
+  justify-content: flex-start; 
+}
+
+.my-about .aboutIcon{
+  width: 45rpx;
+  height: 94rpx;
+}
+.my-about .aboutIcon .icon01{
+   width: 36rpx;
+   height: 36rpx;
+}
+.about{
+   width: 628rpx;
+   color: #a2a2a2;
+   font-size: 32rpx;
+}
+.right{
+  width: 47rpx;
+  justify-content: flex-start; 
+}
+.right .icon02{
+   width: 16rpx;
+   height: 25rpx;
+}
+.my-updata{
+  border: none;
+}
+.update{
+  width: 628rpx;
+  justify-content: space-between;
+  color: #a2a2a2;
+  font-size: 32rpx;
+  padding-right: 13rpx;
+  box-sizing: border-box;
+}
+/*打卡日记*/
+.my-diary{
+  border-top: #eaeaea solid 2px;
+  border-bottom: #eaeaea solid 2px;
+  margin-top: 18rpx;
+}
+
+.my-diary .diary{
+ justify-content: center; 
+  color: #a2a2a2;
+  font-size: 32rpx;
+  border: none;
+  align-items:flex-start;
+  height: auto;
+}
+.my-diary .diary-border{
+  width: 490rpx;
+  margin: 80rpx 0 99rpx 0;
+  border-top: #eaeaea solid 1px;
+ position: relative;
+}
+.my-diary .diary-content{
+  background: #fff;
+  padding: 0 16rpx;
+  position: absolute;
+}
+
+/*footer*/
+
+.footer{
+  width: 100%;
+  height: 108rpx;
+  position: absolute;
+  bottom: 0;
+  border-top: #eaeaea solid 1px;
+}
+.footer .flex-item{
+  flex: 1;
+}
+.footer .icon{
+  width: 60rpx;
+  height: 60rpx;
+}
+.footer text{
+  color: #d7d7d7;
+  font-size: 24rpx;
+}
+.footer .footer-mine text{
+  color: #3fb9b6;
+}

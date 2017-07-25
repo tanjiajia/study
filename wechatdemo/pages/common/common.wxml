@@ -1,0 +1,23 @@
+<!--common.wxml-->
+<!--<text>common.wxml</text>
+<template name="staffName">
+  <view>
+    FirstName: {{firstName}}, LastName: {{lastName}}
+  </view>
+</template>-->
+
+<template name="msgItem" wx:for-item="item">
+  <view>
+    <text> {{index}}: {{msg}} </text>
+    <br />
+    <text> Time: {{time}} </text>
+  </view>
+</template>
+
+<template name="odd">
+  <view> odd </view>
+</template>
+<template name="even">
+  <view> even </view>
+</template>
+

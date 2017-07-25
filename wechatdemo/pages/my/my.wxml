@@ -1,0 +1,102 @@
+<!--my.wxml-->
+<!--<text>my.wxml</text>-->
+<view class="contain">
+  <view class="container">
+    <view class="flex-wrp mymes" style="flex-direction:row;">
+      <view class="flex-item flex-item1 flex-wrp">
+        <image class="my-avatar" src="../../images/1.jpg" background-size="cover"></image>
+      </view>
+      <view class="flex-item flex-item2 ff" style="flex-direction:column;">
+        <view class="my-title">Handsome</view>
+        <view class="my-des">与优秀的小伙伴同行！</view>
+      </view>
+    </view>
+  </view>
+
+  <!--关于、更新日记-->
+  <view class="container box2">
+    <view class="flex-wrp" style="flex-direction:column;">
+
+      <view class="my-about flex-wrp ml30">
+        <view class="aboutIcon flex-wrp">
+          <image class="icon01" src="../../images/about.jpg"  background-size="cover"></image>
+        </view>
+        <view class="about ff" style="flex-direction:column;">
+          关于
+        </view>
+        <view class="right flex-wrp">
+          <image class="icon02" src="../../images/right.jpg"  background-size="cover"></image>
+        </view>
+      </view>
+      <!--更新日记-->
+      <view class="my-about my-updata flex-wrp ml30">
+        <view class="aboutIcon flex-wrp">
+          <image class="icon01" src="../../images/update.jpg"  background-size="cover"></image>
+        </view>
+        <view class="update flex-wrp" style="flex-direction:row;">
+          <view class="update-01 ff">更新日志</view>
+          <view class="update-02 ff">V0.9.9</view>
+        </view>
+        <view class="right flex-wrp">
+          <image class="icon02" src="../../images/right.jpg"  background-size="cover"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!--打卡日记-->
+  <view class="container my-diary">
+    <view class="flex-wrp" style="flex-direction:column;">
+
+      <view class="my-about flex-wrp ml30">
+        <view class="aboutIcon flex-wrp">
+          <image class="icon01" src="../../images/notes.jpg"  background-size="cover"></image>
+        </view>
+        <view class="about ff" style="flex-direction:column;">
+          我的打卡日记
+        </view>
+        <view class="right flex-wrp">
+          
+        </view>
+      </view>
+      
+      <view class="my-about diary  flex-wrp ml30">     
+        <view class="diary-border flex-wrp">
+          <text class="diary-content ff">你还没有发布过打卡日记</text>
+          
+        </view>     
+      </view>
+
+    </view>
+  </view>
+</view>
+
+
+<!--footer
+-->
+<view class="container">
+  <view class=" footer flex-wrp">
+    <view class="flex-item footer-punch flex-wrp" style="flex-direction:column;">
+      <view>
+        <image class="icon" src="../../images/footer_01.jpg"  background-size="cover"></image>
+      </view>
+      <text>打卡</text>
+    </view>
+
+    <view class="flex-item footer-search flex-wrp" style="flex-direction:column;">
+      <view>
+        <image class="icon" src="../../images/footer_02.jpg"  background-size="cover"></image>
+      </view>
+      <text>发现</text>
+    </view>
+
+    <view class="flex-item footer-mine flex-wrp" style="flex-direction:column;">
+      <view>
+        <image class="icon" src="../../images/footer_03.jpg"  background-size="cover"></image>
+      </view>
+      <text>我的</text>
+    </view>
+  </view>
+ 
+</view>
+  
