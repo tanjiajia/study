@@ -4,6 +4,17 @@
 .pie{
 	
 }
+h1{
+	width: 39%;
+	height: 9.5%;
+	background: rgba(75,216,323,.4);
+	line-height: 200%;
+	text-align: center;
+	top: 1.69%;
+	left: 0;
+	color: #fff;
+	font-weight: normal;
+}
 .left{
 	width: 32%;
 	position: absolute;
