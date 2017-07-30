@@ -1,0 +1,7 @@
+;(function(){
+	visualization={
+		init:{
+			
+		}
+	}
+})()
