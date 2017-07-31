@@ -1,20 +1,77 @@
+html{
+	height: 100%;
+}
 .container{
-	
+	width: 100%;
+	height: 100%;
 }
 .pie{
 	
 }
 h1{
 	width: 39%;
-	height: 9.5%;
+	padding: 3.1% 0;
 	background: rgba(75,216,323,.4);
-	line-height: 200%;
 	text-align: center;
 	top: 1.69%;
 	left: 0;
 	color: #fff;
 	font-weight: normal;
 }
+.map{
+	height: 100%;
+}
+.money{
+	position: absolute;
+	top: 22.9%;
+	left: 2.9%;
+}
+.money div{
+	font-size: 20px;
+}
+.money .pay div,
+.money .yesterdayPay div{
+	float: left;
+}
+.w280{
+	width: 280px;
+	line-height: 80px;
+	height: 80px;
+}
+.colord7cf69{
+	color: #c5c488;
+}
+
+.money .yPay,
+.money .rise{
+	margin-left: 10px;
+	letter-spacing: 2px;
+}
+.money .payList{
+	float: left;
+	max-width: ;
+}
+.money .payList li{
+	height: 7.8%;
+	background: #0fb8dc;
+	margin-right: 15px;
+	float: left;
+	line-height: 90px;
+	text-align: center;
+	color: #fff;
+	font-size: 70px;
+	padding: 0 2px;
+}
+.money .day{
+	font-size: 40px;
+	line-height: 90px;
+	float: left;
+}
+.money .time{
+	/*color: #c5c3cd;*/
+	font-size: 18px;
+}
+
 .left{
 	width: 32%;
 	position: absolute;
@@ -33,19 +90,7 @@ h1{
 .tac{
 	text-align: center;
 }
-.box{
-	height: 100%;
-	display: box;
-  	display: -webkit-box;
-  	/*box-orient: vertical;
-  -webkit-box-orient: vertical;*/
-  	box-align: center;
-  	-webkit-box-align: center;
-}
-.box .inbox{
-	width: 50%;
-	
-}
+
 .contain{
 	position: relative;
 	border-radius: 5px;
@@ -53,22 +98,37 @@ h1{
 	box-shadow: 0 0 5px rgba(255,255,255,.3);
 	padding: 30px 10px 0px;
 	width: 100%;
-	/*height: 324px;*/
+	/*height: 100%;*/
 	margin-top: 40px;
 	box-sizing: border-box;
 	box-flex: 1;
-  -webkit-box-flex: 1;
-  display: box;
+  	-webkit-box-flex: 1;
+  	display: box;
   	display: -webkit-box;
-  	box-orient: vertical;
-  -webkit-box-orient: vertical;
-
+	box-align: center;
+  	-webkit-box-align: center;
+}
+.box .inbox.inboxCenter{
+	height: auto;	
+}
+.box{
+	width: 100%;
+	display: box;
+  	display: -webkit-box;
+  	box-align: center;
+  	-webkit-box-align: center;
+  	position: absolute;
+  	top: 10%;
+  	bottom: 10%;
+}
+.box .inbox{
+	width: 50%;
+	height: 100%;
 }
 .title{
 	width: 61.3%;
 	background: rgba(15,45,74,.3);	
 	height: 40px;
-	/*margin: -20px auto 0;*/
 	text-align: center;
 	line-height: 40px;
 	color: #c7c77e;
@@ -86,11 +146,18 @@ h1{
 	font-size: 12px;
 	/*margin: 5px 0;*/
 }
-
+.inbox .pie04-channel{
+	margin-top: 10px;
+}
+.pie04-channel{
+	width: 100%;
+}
 .pie04-channel li{
 	overflow: hidden;
+	width: 100%;
 	padding-left: 15px;
 	margin-bottom: 5px;
+	box-sizing: border-box;
 }
 .pie04-channel li div{
 	float: left;
@@ -99,7 +166,7 @@ h1{
 	text-align: center;
 }
 .pie04-channel li div:nth-child(1){
-	width: 15%;
+	width: 10%;
 }
 .pie04-channel li div:nth-child(2){
 	width: 28%;
@@ -129,19 +196,24 @@ h1{
 	left: 5px;
 	width: 37.7%;
 }
+.containSort .box{
+	position: relative;
+	top: auto;
+	bottom: auto;
+}
 .goodsSortList{
 	width: 100%;
 }
 .pie04-channel.goodsSortList li div:nth-child(1),
 .pie04-channel.shopSortList li div:nth-child(1){
-	width: 10%;
+	width: 7%;
 }
 .pie04-channel.goodsSortList li div:nth-child(2),
 .pie04-channel.shopSortList li div:nth-child(2){
-	width: 59%;
+	width: 60%;
 }
 .pie04-channel.goodsSortList li div:nth-child(3),
 .pie04-channel.shopSortList li div:nth-child(3){
-	width: 30%;
+	width: 33%;
 }
 

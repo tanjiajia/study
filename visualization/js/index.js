@@ -1,4 +1,67 @@
 $(function(){
+	
+	//支付金额
+	paymoney();
+	
+	function paymoney(){
+		$.get('json/paymoney.json').done(function (data){
+			var todaypay=data.todaypay;
+           	var yesterdayPay=data.yesterdayPay;
+	    	var rise=data.rise;
+	    	
+	    	$('.yPay').text(yesterdayPay);
+	    	$('.rise').text(rise);
+	    	
+	    	var payarr=[];
+	    	for(var i = 0; i < todaypay.length; i ++){
+	    	 	payarr[i]=todaypay.charAt(i);
+	    	};
+	    	$('.payList').children("[data-type=list]:not(.dn)").remove(); 
+// 			console.log(payarr);
+ 			$.each(payarr, function(i,value) {
+ 				clone = $('.payList').children("[data-type=list].dn").clone(true).removeClass("dn");
+//				console.log(value);
+		      	clone.text(value);
+		      	$('.payList').append(clone);
+		      	if (value.isEnd!=0) {
+		      		$('.box-continue').addClass('dn');
+		      	}
+ 			});
+ 						
+			
+		});
+		
+//		获取时间
+
+		var clockon = function () {
+		    var now = new Date();
+		    var year = now.getFullYear(); 
+		    var month = now.getMonth();
+		    var date = now.getDate();
+		    var day = now.getDay();
+		    var hour = now.getHours();
+		    var minu = now.getMinutes();
+		    var sec = now.getSeconds();
+		    var week;
+		    month = month + 1;
+		    if (month < 10) month = "0" + month;
+		    if (date < 10) date = "0" + date;
+		    if (hour < 10) hour = "0" + hour;
+		    if (minu < 10) minu = "0" + minu;
+		    if (sec < 10) sec = "0" + sec;
+//		    var arr_week = new Array("星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六");
+//		    week = arr_week[day];
+		    var time = "";
+//		    time = year + "年" + month + "月" + date + "日" + " " + hour + ":" + minu + ":" + sec + " " + week;
+		    time = year + "-" + month + "-" + date + " " + " " + hour + ":" + minu + ":" + sec;
+		
+		    $(".time").text(time);
+
+		}
+		var timer = setInterval(clockon, 1000);
+				
+	};
+	
 		//	全网成交情况
 	proportion(); 
 	function proportion(){
@@ -388,7 +451,7 @@ $(function(){
 		
 		      	clone.find(".number span").text(i+1);
 		      	clone.find(".channel").text(value.name);
-		      	clone.find(".money").text(value.value);
+		      	clone.find(".money00").text(value.value);
 		      	$('.channellist').append(clone);
 		      	if (value.isEnd!=0) {
 		      		$('.box-continue').addClass('dn');
@@ -404,7 +467,7 @@ $(function(){
 	
 	      	clone.find(".number span").text(i+1);
 	      	clone.find(".channel").text(value.name);
-	      	clone.find(".money").text(value.value);
+	      	clone.find(".money00").text(value.value);
 	      	list.append(clone);
 	      	if (value.isEnd!=0) {
 	      		$('.box-continue').addClass('dn');
@@ -437,4 +500,135 @@ $(function(){
 			list(shopSortList01,datalist);
 		});
 	};	
+
+//	map
+	map();
+	function map(){
+
+
+		$.get('json/mapvalue.json').done(function (respon) {  
+			var data=respon.data;
+			var geoCoordMap=respon.geoCoordMap;
+			var convertData = function (data) {
+				
+                var res = [];
+                for (var i = 0; i < data.length; i++) {
+                    var geoCoord = geoCoordMap[data[i].name];
+                    if (geoCoord) {
+                        res.push({
+                            name: data[i].name,
+                            value: geoCoord.concat(data[i].value)
+                        });
+                    }
+                }
+                return res;
+            };
+            var ChartMap = echarts.init(document.getElementById('map'));
+            ChartMap.setOption({ 
+                backgroundColor: '#404a59',
+               
+                tooltip : {
+                    trigger: 'item'
+                },
+                legend: {
+                    orient: 'vertical',
+                    y: 'bottom',
+                    x:'right',
+                    data:['pm2.5'],
+                    textStyle: {
+                        color: '#fff'
+                    }
+                },
+                geo: {
+                    map: 'china',
+                    /*left: '400',
+			        right: '20%',
+			        bottom:'0%',
+			        center: [117.98561551896913, 31.205000490896193],
+			        zoom: 2.5,*/
+//			       	left: '680',
+			       	top:'35%',
+			        right: '25%',
+			        center: [117.98561551896913, 31.205000490896193],
+			        zoom: 2.8,
+                    label: {
+                        emphasis: {
+                            show: false
+                        }
+                    },
+                    roam: true,
+                    itemStyle: {
+                        normal: {
+                            areaColor: '#323c48',
+                            borderColor: '#111'
+                        },
+                        emphasis: {
+                            areaColor: '#2a333d'
+                        }
+                    }
+                },
+                series : [
+                    {
+                        name: '销售额',
+                        type: 'scatter',
+                        coordinateSystem: 'geo',
+                        data: convertData(data),
+                        symbolSize: function (val) {
+                            return val[2] / 10;
+                        },
+                        label: {
+                            normal: {
+                                formatter: '{b}',
+                                position: 'right',
+                                show: false
+                            },
+                            emphasis: {
+                                show: true
+                            }
+                        },
+                        itemStyle: {
+                            normal: {
+                                color: '#d1ea8d'
+                            }
+                        }
+                    },
+                    {
+                        name: 'Top 5',
+                        type: 'effectScatter',
+                        coordinateSystem: 'geo',
+                        data: convertData(data.sort(function (a, b) {
+                            return b.value - a.value;
+                        }).slice(0, 6)),
+                        symbolSize: function (val) {
+                            return val[2] / 10;
+                        },
+                        showEffectOn: 'render',
+                        rippleEffect: {
+                            brushType: 'stroke'
+                        },
+                        hoverAnimation: true,
+                        label: {
+                            normal: {
+                                formatter: '{b}',
+                                position: 'right',
+                                show: true
+                            }
+                        },
+                        itemStyle: {
+                            normal: {
+                                color: 'rgba(232,225,148,.8)',
+                                shadowBlur: 10,
+                                shadowColor: '#333'
+                            }
+                        },
+                        zlevel: 1
+                    }
+                ]
+            });
+		
+		}); 
+		       
+		  
+	};
+	
 });
