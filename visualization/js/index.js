@@ -1,6 +1,6 @@
 $(function(){
 	
-	//支付金额
+	// 获取今天 昨天支付金额
 	paymoney();
 	
 	function paymoney(){
@@ -31,8 +31,7 @@ $(function(){
 			
 		});
 		
-//		获取时间
-
+//		获取时间  格式：2017-04-04 14:20:20
 		var clockon = function () {
 		    var now = new Date();
 		    var year = now.getFullYear(); 
@@ -42,17 +41,13 @@ $(function(){
 		    var hour = now.getHours();
 		    var minu = now.getMinutes();
 		    var sec = now.getSeconds();
-		    var week;
 		    month = month + 1;
 		    if (month < 10) month = "0" + month;
 		    if (date < 10) date = "0" + date;
 		    if (hour < 10) hour = "0" + hour;
 		    if (minu < 10) minu = "0" + minu;
 		    if (sec < 10) sec = "0" + sec;
-//		    var arr_week = new Array("星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六");
-//		    week = arr_week[day];
 		    var time = "";
-//		    time = year + "年" + month + "月" + date + "日" + " " + hour + ":" + minu + ":" + sec + " " + week;
 		    time = year + "-" + month + "-" + date + " " + " " + hour + ":" + minu + ":" + sec;
 		
 		    $(".time").text(time);
@@ -139,13 +134,11 @@ $(function(){
 				        radius: ['70%', '75%'],
 			            startAngle:[45],
 			            color: ['#4bd8e8', '#FFF'],
-			            x: '0%', // for funnel
+			            x: '0%', 
 			            itemStyle : labelFromatter,
 			            data : [
 			            	data0,
 			            	data1
-			                /*{name:'未完成', value:750,itemStyle:labelBottom},*/
-//			                {name:'完成率', value:250,itemStyle:labelTop}
 			            ]
 			        }
 			    ]
@@ -154,8 +147,7 @@ $(function(){
 		});
 	};
 	    
-	//	全网成交情况 折线
-	
+	//	全网成交情况 折线	
 	payment();
 	function payment(){
 		var seriesData,xAxisData;
@@ -445,7 +437,6 @@ $(function(){
 			})
 		  	$('.channellist').children("[data-type=list]:not(.dn)").remove(); 
 		
-//			$('.channellist').removeClass('dn');
 			$.each(datalist,function(i,value){
 	        	clone = $('.channellist').children("[data-type=list].dn").clone(true).removeClass("dn");
 		
@@ -525,7 +516,7 @@ $(function(){
             };
             var ChartMap = echarts.init(document.getElementById('map'));
             ChartMap.setOption({ 
-                backgroundColor: '#404a59',
+                backgroundColor: '',
                
                 tooltip : {
                     trigger: 'item'
@@ -541,16 +532,10 @@ $(function(){
                 },
                 geo: {
                     map: 'china',
-                    /*left: '400',
-			        right: '20%',
-			        bottom:'0%',
+			       	top:'42%',
+			        right: '22%',
 			        center: [117.98561551896913, 31.205000490896193],
-			        zoom: 2.5,*/
-//			       	left: '680',
-			       	top:'35%',
-			        right: '25%',
-			        center: [117.98561551896913, 31.205000490896193],
-			        zoom: 2.8,
+			        zoom: 2.2,
                     label: {
                         emphasis: {
                             show: false
@@ -559,11 +544,14 @@ $(function(){
                     roam: true,
                     itemStyle: {
                         normal: {
-                            areaColor: '#323c48',
+                        	areaColor: 'rgba(75,216,232,.3)',
                             borderColor: '#111'
+//                          areaColor: '#323c48',
+//                          borderColor: '#111'
                         },
                         emphasis: {
-                            areaColor: '#2a333d'
+//                          areaColor: '#2a333d'
+                            areaColor: 'rgba(75,216,232,.3)'
                         }
                     }
                 },
@@ -574,7 +562,7 @@ $(function(){
                         coordinateSystem: 'geo',
                         data: convertData(data),
                         symbolSize: function (val) {
-                            return val[2] / 10;
+                            return val[2] / 5;
                         },
                         label: {
                             normal: {
@@ -588,7 +576,8 @@ $(function(){
                         },
                         itemStyle: {
                             normal: {
-                                color: '#d1ea8d'
+//                              color: '#d1ea8d'
+                                color: 'rgba(193,242,72,.7)'
                             }
                         }
                     },
@@ -600,7 +589,7 @@ $(function(){
                             return b.value - a.value;
                         }).slice(0, 6)),
                         symbolSize: function (val) {
-                            return val[2] / 10;
+                            return val[2] / 5;
                         },
                         showEffectOn: 'render',
                         rippleEffect: {
@@ -616,7 +605,7 @@ $(function(){
                         },
                         itemStyle: {
                             normal: {
-                                color: 'rgba(232,225,148,.8)',
+                                color: 'rgba(232,248,116,.8)',
                                 shadowBlur: 10,
                                 shadowColor: '#333'
                             }
