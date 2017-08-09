@@ -46,7 +46,8 @@ $(function(){
 
           	},
           	error : function(data){
-            
+            	var resMsg=data.resMsg;
+			    	alert(resMsg);
           	}
         })
     });
@@ -55,6 +56,7 @@ $(function(){
 //		var resCode = $('[data-type=smscode]').value;
 		$(".box1-btn").click(function(){
 	        var mobile = $("#mobile").find("[data-type=mobile]").val();
+	        var setMobile = localStorage.setItem('mobile',mobile);
 	        var code = $("[data-type=smscode]").val();
 	        var token;
 	        var getToken= localStorage.getItem('token');
