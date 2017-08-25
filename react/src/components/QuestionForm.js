@@ -2,12 +2,12 @@
 * @Author: Administrator
 * @Date:   2017-08-17 10:11:43
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-08-23 17:56:04
+* @Last Modified time: 2017-08-24 17:52:49
 */
 
 import React, { Component } from  "react";
 // import ReactDOM from 'react-dom';
-// import $ from 'jquery';
+import $ from 'jquery';
 
 export default class QuestionFrom extends Component{
 	constructor(props){
@@ -32,16 +32,59 @@ export default class QuestionFrom extends Component{
 			description: this.refs.description.value,
 			voteCount: 0
 		};
-		console.log(newQuestion);
-
-		this.refs.addQuestionForm.reset();
-
+		// console.log(newQuestion);
 		this.props.onNewQuestion( newQuestion );
+		/*this.props.onNewQuestion({
+			title: this.refs.title.value,
+			description: this.refs.description.value,
+			voteCount: 0
+		});*/
+		// this.refs.addQuestionForm.reset();
+		this.refs.title.value = '';
+		this.refs.description.value = '';
+
+		
 		
 		// console.log(titleVal);
 	}
 
-	
+	onNewQuestion(newQuestion){
+  		/*var length = this.state.questions.length;
+  		newQuestion.key = length + 1;
+
+		var newQuestions = this.state.questions.concat( newQuestion );
+
+		newQuestions = this.sortQuestion( newQuestions );
+
+		this.setState({
+			questions: newQuestions,
+		})*/
+		var comments = this.state.questions;
+		var newComments = comments.concat([newQuestion]);
+		this.setState({data: newComments});
+
+		$.get(this.props.urL, newQuestion, function (result) {
+	     	
+	     	
+	     	this.setState({
+		        questions: result
+		    });
+		   
+	    }.bind(this));
+
+		/*$.ajax({
+	       url: this.props.url,
+	       dataType: 'json',
+	       type: 'POST',
+	       data: newQuestion,
+	       success: function(data) {
+	         this.setState({questions: data});
+	       }.bind(this),
+	       error: function(xhr, status, err) {
+	         console.error('shibai');
+	       }.bind(this)
+	     });*/
+  	}
 	
 
 	render() {

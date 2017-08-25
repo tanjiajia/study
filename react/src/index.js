@@ -10,6 +10,6 @@ import Questionapp from './components/Questionapp';
 // 	 <Questionapp />,
 // 	document.getElementById('app')
 // );
-ReactDOM.render(<Questionapp />, document.getElementById('app'));
+ReactDOM.render(<Questionapp url='./json/Question.json'/>, document.getElementById('app'));
 
 // registerServiceWorker();
