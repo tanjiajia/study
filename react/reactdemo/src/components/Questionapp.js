@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-08-17 10:07:28
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-08-24 17:57:06
+* @Last Modified time: 2017-08-25 15:04:37
 */
 
 import React, { Component } from 'react';
@@ -21,10 +21,17 @@ class Questionapp extends Component{
 
 		this.state = {
 			formDisplayed: false,
-			questions: []
+			questions: [],
+			newQuestion:[]
 		};
 
 	}
+
+	/*setState(obj) {
+        this.setState({
+        	questions: obj
+        });
+    }*/
 
 	onToggleForm() {
 		this.setState({
@@ -33,28 +40,29 @@ class Questionapp extends Component{
 	}
 
 	onNewQuestion(newQuestion){
-  		/*var length = this.state.questions.length;
-  		newQuestion.key = length + 1;
 
-		var newQuestions = this.state.questions.concat( newQuestion );
-
-		newQuestions = this.sortQuestion( newQuestions );
+		var comments = this.state.questions;
+		var newComments = comments.concat(newQuestion);
+		// console.log(newComments);
+		newQuestion = this.sortQuestion( newComments );
 
 		this.setState({
-			questions: newQuestions,
-		})*/
-		var comments = this.state.questions;
-		var newComments = comments.concat([newQuestion]);
-		this.setState({data: newComments});
-		
-		$.get(this.props.url, newQuestion, function (result) {
+			questions: newQuestion
+		});
+		console.log(this.state.questions);
+		// console.log('提交成功')
+
+		// console.log('提交form成功');
+		/*$.get(this.props.url, newQuestion, function (result) {
 	     	
 	     	
 	     	this.setState({
 		        questions: result
 		    });
+		console.log('提交ajax成功');
+		console.log(this.state.questions);
 		   
-	    }.bind(this));
+	    }.bind(this));*/
 
 		/*$.ajax({
 	       url: this.props.url,
@@ -69,11 +77,19 @@ class Questionapp extends Component{
 	       }.bind(this)
 	     });*/
   	}
-	
+
+	sortQuestion(questions){
+		questions.sort(function(a,b){
+			return b.voteCount - a.voteCount;
+		});
+
+		return questions;
+
+	}
 
 	componentDidMount() {
 	    this.serverRequest = $.get(this.props.url, function (result) {
-	     	// var result = result.concat(newQuestion);
+	     	
 	     	// console.log(result);
 	     	this.setState({
 		        questions: result
@@ -93,27 +109,19 @@ class Questionapp extends Component{
 
   	
 
-  	/*onVote(key,newcount) {
+  	onVote(key,newcount) {
 
-		$.each(this.state.questions, function(index, val) {
-			
-			val.voteCount = newcount;
+		var questionsCount=this.state.questions;
+		questionsCount[key].voteCount = newcount;
+		questionsCount = this.sortQuestion(questionsCount);
 
-		});
-		const questions = this.sortQuestion(this.state.questions);
 		this.setState({
-	        questions: questions
-	    });
+			questions: questionsCount
+		})
+
   	}
 
-  	sortQuestion (questions){
-		questions.sort(function(a,b){
-			return b.voteCount - a.voteCount;
-		});
 
-		return questions;
-
-	}*/
 
 	render() {
 	    return (
@@ -125,11 +133,13 @@ class Questionapp extends Component{
 		          </div>
 		    </div>
 		    <div className="main container" >
-		        <QuestionForm 
-		        	onNewQuestion={ () => { this.onNewQuestion(); }}
+		        <QuestionForm ref='addQuection'      	
+		        	onNewQuestion={ this.onNewQuestion.bind(this) }
 		        	onToggleForm={() => { this.onToggleForm(); }} 
-			  		formDisplayed={this.state.formDisplayed }/>
-		        <QuestionList questions = { this.state.questions } />
+			  		formDisplayed={this.state.formDisplayed }
+			  		questions = { this.state.questions }
+			  		newQuestion = { this.state.newQuestion } />
+		        <QuestionList questions = { this.state.questions } onVote={ () => { this.onVote(); } } />
 		        
 		      </div>
 	      </div>

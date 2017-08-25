@@ -2,12 +2,11 @@
 * @Author: Administrator
 * @Date:   2017-08-17 10:11:43
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-08-24 17:52:49
+* @Last Modified time: 2017-08-25 15:05:15
 */
 
 import React, { Component } from  "react";
-// import ReactDOM from 'react-dom';
-import $ from 'jquery';
+
 
 export default class QuestionFrom extends Component{
 	constructor(props){
@@ -21,71 +20,28 @@ export default class QuestionFrom extends Component{
 
 	handleForm(e){
 		e.preventDefault();
-		// if(!this.refs.title.getDOMNode().value.trim()) return;
-		/* this.setState({
-		 	tit: e.target.value,
-			des: e.target.value
-		 });*/
-
+		if(!this.refs.title.value.trim()) return;
+		
 		var newQuestion = {
 			title: this.refs.title.value,
 			description: this.refs.description.value,
-			voteCount: 0
+			voteCount: 0,
+			Id: this.props.questions.length + 1
+
 		};
-		// console.log(newQuestion);
-		this.props.onNewQuestion( newQuestion );
-		/*this.props.onNewQuestion({
-			title: this.refs.title.value,
-			description: this.refs.description.value,
-			voteCount: 0
-		});*/
+		// var comments = this.props.questions;
+		// newQuestion = comments.concat(newQuestion);
+		// console.log(newComments);
+		// console.log(this.props.questions);
+		this.props.onNewQuestion(newQuestion);
+
+		
 		// this.refs.addQuestionForm.reset();
 		this.refs.title.value = '';
 		this.refs.description.value = '';
 
-		
-		
-		// console.log(titleVal);
 	}
 
-	onNewQuestion(newQuestion){
-  		/*var length = this.state.questions.length;
-  		newQuestion.key = length + 1;
-
-		var newQuestions = this.state.questions.concat( newQuestion );
-
-		newQuestions = this.sortQuestion( newQuestions );
-
-		this.setState({
-			questions: newQuestions,
-		})*/
-		var comments = this.state.questions;
-		var newComments = comments.concat([newQuestion]);
-		this.setState({data: newComments});
-
-		$.get(this.props.urL, newQuestion, function (result) {
-	     	
-	     	
-	     	this.setState({
-		        questions: result
-		    });
-		   
-	    }.bind(this));
-
-		/*$.ajax({
-	       url: this.props.url,
-	       dataType: 'json',
-	       type: 'POST',
-	       data: newQuestion,
-	       success: function(data) {
-	         this.setState({questions: data});
-	       }.bind(this),
-	       error: function(xhr, status, err) {
-	         console.error('shibai');
-	       }.bind(this)
-	     });*/
-  	}
-	
 
 	render() {
 		var styleObj={
@@ -106,6 +62,3 @@ export default class QuestionFrom extends Component{
   }
 }
 
-
-
-// export default QuestionForm;
