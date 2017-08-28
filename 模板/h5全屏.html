@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+
+	<title>Document</title>
+	<style type="text/css">
+	*{
+		padding: 0;
+		margin: 0;
+	}
+		html,body{
+			width: 100%;
+			height: 100%;
+		}
+		.box{
+			width: 100%;
+			height: 100%;
+			position: relative;
+		}
+		.content{
+			width: 100%;
+			height: 100%;
+			line-height: 100%;
+			overflow: hidden;
+			background: #ccc;
+			
+		}
+		#full,
+		#exit{
+			position: absolute;
+			top: 100px;
+			left: 100px;
+			/* height: 100%; */
+			cursor: pointer;
+		}
+		.dn{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="content">div</div>
+		<div id="full">full</div>
+		<div id="exit" class="dn">exit</div>
+	</div>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript">
+		$('#full').click(function(event) {
+			requestFullScreen();
+			// launchFullscreen();
+			// isFullscreen();
+			$(this).addClass('dn');
+			$('#exit').removeClass('dn');
+		});
+
+		$('#exit').click(function(event) {
+			exitFullscreen();
+			$(this).addClass('dn');
+			$('#full').removeClass('dn');
+		});
+		
+
+		function launchFullscreen() {
+	   		var de = document.documentElement;
+		    //此方法不可以在異步任務中執行，否則火狐無法全屏
+		    if(de.requestFullscreen) {
+		       de.requestFullscreen();
+		    } else if(de.mozRequestFullScreen) {
+		       de.mozRequestFullScreen();
+		    } else if(de.msRequestFullscreen){ 
+		       de.msRequestFullscreen();  
+		    } else if(de.oRequestFullscreen){
+		        de.oRequestFullscreen();
+		    }
+		    else if(de.webkitRequestFullscreen)
+		     {
+		       de.webkitRequestFullScreen();
+		    }else{
+		     
+		        var docHtml  = document.documentElement;
+		        var docBody  = document.body;
+		        var videobox  = document.getElementById('videobox');
+		        var  cssText = 'width:100%;height:100%;overflow:hidden;';
+		        docHtml.style.cssText = cssText;
+		        docBody.style.cssText = cssText;
+		        videobox.style.cssText = cssText+';'+'margin:0px;padding:0px;';
+		        document.IsFullScreen = true;
+
+		    }
+	   	}
+
+	   	function exitFullscreen() {
+	       	if (document.exitFullscreen) {
+	         	document.exitFullscreen();
+	       	} else if (document.msExitFullscreen) {
+	         	document.msExitFullscreen();
+	       	} else if (document.mozCancelFullScreen) {
+	         	document.mozCancelFullScreen();
+	       	} else if(document.oRequestFullscreen){
+	            document.oCancelFullScreen();
+	        }else if (document.webkitExitFullscreen){
+	         	document.webkitExitFullscreen();
+	       	}else{
+		        var docHtml  = document.documentElement;
+		        var docBody  = document.body;
+		        var videobox  = document.getElementById('videobox');
+		        docHtml.style.cssText = "";
+		        docBody.style.cssText = "";
+		        videobox.style.cssText = "";
+		        document.IsFullScreen = false;
+	    	}
+	  	}
+
+		
+
+		//进入全屏
+		function requestFullScreen() {
+		    var de = document.documentElement;
+		    if (de.requestFullscreen) {
+		        de.requestFullscreen();
+		    } else if (de.mozRequestFullScreen) {
+		        de.mozRequestFullScreen();
+		    } else if (de.webkitRequestFullScreen) {
+		        de.webkitRequestFullScreen();
+		    } else if (de.msRequestFullscreen) {
+		        de.msRequestFullscreen();
+		    }
+		}
+		//退出全屏
+		function exitFullscreen() {
+		    var de = document;
+		    if (de.exitFullscreen) {
+		        de.exitFullscreen();
+		    } else if (de.mozCancelFullScreen) {
+		        de.mozCancelFullScreen();
+		    } else if (de.webkitCancelFullScreen) {
+		        de.webkitCancelFullScreen();
+		    } else if (de.msExitFullscreen) {
+		        de.msExitFullscreen();
+		    }
+		}
+	</script>
+</body>
+</html>
