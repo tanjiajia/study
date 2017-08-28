@@ -1,0 +1,35 @@
+.box{
+	display: -webkit-box; /* Chrome 4+, Safari 3.1, iOS Safari 3.2+ */
+	display: -moz-box; /* Firefox 17- */
+	display: box;
+	display: -webkit-flex; /* Chrome 21+, Safari 6.1+, iOS Safari 7+, Opera 15/16 */
+	display: -moz-flex; /* Firefox 18+ */
+	display: -ms-flexbox; /* IE 10 */
+	display: flex;
+  	box-orient: vertical;
+  	-webkit-box-orient: vertical;
+  	-moz-box-orient: vertical;	
+  	-ms-flex-direction:column;  /*IE*/
+	flex-direction:column;
+ 	box-align: center;
+  	-webkit-box-align: center;
+}
+.box .inbox{
+	-webkit-box-flex:1;
+	-moz-box-flex:1;
+	-ms-box-flex:1;
+	flex:1;
+}
+
+#box{
+	/*flex*/
+  	/* flex-direction: row | row-reverse | column | column-reverse; 主抽方向  */  
+  	
+  	/*flex-wrap: nowrap | wrap | wrap-reverse; 是否换行 (不换行 | 换行，第一行在上方 | 换行，第一行在下方)*/  
+  	
+  	/*justify-content: flex-start | flex-end | center | space-between | space-around;*/  
+  	
+  	/*align-items: flex-start | flex-end | center | baseline | stretch; y抽上如何对齐 */  
+  	
+  	/*align-content: flex-start | flex-end | center | space-between | space-around | stretch;*/  
+}

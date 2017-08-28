@@ -39,6 +39,36 @@
 		.dn{
 			display: none;
 		}
+		/* 各种浏览器都提供了一个非常有用的全屏模式时的css样式规则： */
+		-webkit-full-screen {
+		 
+		 /* properties */
+		}
+		:-moz-full-screen {
+		 /* properties */
+		}
+		:-ms-fullscreen {
+		 /* properties */
+		}
+		:full-screen { /*pre-spec */
+		 /* properties */
+		}
+		:fullscreen { /* spec */
+		 /* properties */
+		}
+		/* deeper elements */
+		:-webkit-full-screen video {
+		 width: %;
+		 height: %;
+		}
+		/* styling the backdrop*/
+		::backdrop {
+		 /* properties */
+		}
+		::-ms-backdrop {
+		 /* properties */
+		}
+
 	</style>
 </head>
 <body>
@@ -144,7 +174,7 @@
 		    }
 		}
 
-		
+
 	</script>
 </body>
 </html>

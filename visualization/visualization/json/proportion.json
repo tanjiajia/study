@@ -1,0 +1,11 @@
+{ 
+	"total": 1000,
+	"proportion":250,
+	"title":"25%",
+	"option":[
+		{"name":"未完成","value":750} ,
+		{"name":"完成率","value":250}
+		
+	]
+	   
+} 
