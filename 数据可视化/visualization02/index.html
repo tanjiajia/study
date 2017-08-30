@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+		<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+       	<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts-all-3.js"></script>
+       	<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+       	<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+       	<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+       	<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+       	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+       	<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+
+       	<style type="text/css">
+       		
+       	</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="map" id="map" style="height: 100%;width: 100%;"></div>
+			<div class="money" id="money">
+
+				<div class="pay clearfix">
+					<div class="fl">
+						<img src="images/logo00.jpg"/>
+					</div>
+					<div class="time fr"></div>
+				</div>				
+				
+				<ul class="payList clearfix">
+					<li class="dn fl" data-type='list'></li>
+					
+				</ul>				
+				
+			</div>
+			
+			<div class="left">
+				<div class="pie contain">
+					<!--<div class="title">
+						全网成交情况
+					</div>-->
+					
+					<div class="box">
+						<div class="inbox" style="width:50%;">
+							<div class="Ltitle">目标达成率</div>
+							<div id="pie03" style="height:89%;padding-top:20px;"></div>
+						</div>
+						
+						<div class="inbox" id="" style="width: 50%;">
+							<div class="Ltitle">无线端交易占比</div>
+							<div id="line01" style="height:100%;width: 100%;padding-top:20px;">
+								
+							</div>
+						</div>
+					</div>
+					
+				</div>
+				<div class="pie contain">
+					<div class="title">
+						买家画像 <span>性别</span>
+					</div>
+					<div class="box">
+						<div class="inbox" style="width:50%;padding-top:10px;">
+                            <div class="manSex fl">
+                            	<span></span>
+                            	<em><div class="menPercentage">60.00%</div>男</em>
+                            </div>
+                            <div class="manList fr">
+                            	<ul>
+                            		<li class="dn"></li>
+                            		<li></li>
+                            		<li></li>
+                            		<li></li>
+                            		<li></li>
+                                    <li></li>
+                            		<li></li>
+                            		<li></li>
+                            		<li></li>
+                            		<li></li>
+                                    <li></li>
+                            		<li></li>
+                            		<li></li>
+                            		<li></li>
+                            		<li></li>
+                            	</ul>
+                            </div>
+						</div>
+						
+						<div class="inbox" style="width:50%;padding-top:10px;">
+                            <div class="womanList fl">
+                            	<ul>
+                            		<li></li>
+                            		<li></li>
+                            		<li></li>
+                            		<li></li>
+                            		<li></li>
+                                    <li></li>
+                            		<li></li>
+                            		<li></li>
+                            		<li></li>
+                            	</ul>
+                            </div>
+                            <div class="womanSex fl">
+                            	<span></span>
+                            	<em><div class="womenPercentage">40.00%</div>女</em>
+                            </div>
+						</div>
+					</div>
+					
+				</div>
+				<!--........................3...................-->
+				<div class="pie contain">
+					<div class="title">
+						店铺商品榜 <span>交易</span>
+					</div>
+					<div class="box">
+						
+						<div class="inbox inboxCenter" id="" style="width: 43%;">
+							
+							<ul class="pie04-channel channellist">
+								<li class="dn" data-type="list">
+									<div class="img">
+										<!--<span>0</span>-->
+										<img src="images/logo.jpg"/>
+									</div>
+									<div class="product">渠道</div>
+									<div class="money00">金额</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			
+			<!--热销商品与平铺排行-->
+			<div class="contain containSort">
+
+					<div class="box">
+						
+						<div class="inbox" id="" style="height:100%;">
+							<ul class="goodsSortList goodsSortList01">
+								<li class="list clearfix" style="margin-bottom: 20px;">
+									<div class="number list_01 fl">
+										<span class="fl" style="background: none;color: transparent;">0</span>
+										<div class="shopName fl list_02">店铺名称</div>
+									</div>									
+									<div class="channel shopName fl list_03">销售额</div>
+									<div class="money00 shopName fl list_04">百分比</div>
+								</li>
+								<li class="dn clearfix list" data-type="list">
+									<div class="number fl list_01 list_00">
+										<span class="fl">0</span>
+										<div class=" fl list_02">同仁堂</div>
+									</div>
+									<div class="fl list_03 list_00">										
+										<div class="fl vallist01 vallist00" data-type="vallist01">500</div>
+										<div class="fl vallist02 vallist00" data-type="vallist02">500</div>																			
+									</div>
+									<div class="fl list_04 list_00">										
+										<div class="fl vallist03 vallist00" data-type="vallist03">15%</div>
+										<div class="fl vallist04 vallist00" data-type="vallist04">15%</li>										
+									</div>
+								</li>
+							</ul>
+						</div>
+						
+					</div>
+					
+			</div>
+		</div>
+		<!--<h1 class="pos-A">
+			易恒数据作战室
+		</h1>-->
+	    <script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>
