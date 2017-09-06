@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+		<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+       	<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts-all-3.js"></script>
+       	<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+       	<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+       	<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+       	<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+       	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+       	<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+
+	</head>
+	<body>
+		<div class="container">
+			<div class="map" id="map" style="height: 100%;width: 100%;"></div>
+			<div class="money" id="money">
+
+				<div class="pay clearfix">
+					<div class="fl">
+						<img src="images/logo00.jpg"/>
+					</div>
+					<div class="time fr"></div>
+				</div>				
+				
+				<ul class="payList clearfix">
+					<li class="dn fl" data-type='list'></li>
+					
+				</ul>				
+				
+			</div>
+			
+			<div class="left">
+				<div class=" pie contain">
+					<div class="box">
+						<div class="inbox" style="width:50%;">
+							<div class="Ltitle">目标达成率</div>
+							<div id="pie03" style="height:89%;padding-top:20px;"></div>
+						</div>
+						
+						<div class="inbox" id="" style="width: 50%;">
+							<!--<div class="Ltitle">无线端交易占比</div>-->
+							<div id="line01" style="height:100%;width: 100%;padding-top:0px;">
+								
+							</div>
+						</div>
+					</div>
+					
+				</div>
+				<div class=" pie contain">
+					<div class="title">
+						买家画像 （性别）
+					</div>
+				  <div class="box">
+						<div class="inbox" style="width:50%;padding-top:10px;">
+                            <div class="manSex fl">
+                            	<span><img src="images/person1.png" alt=""/></span>
+                            	<em>60.00%<br/>男</em>
+                            </div>
+                            <div class="manList fr">
+                            	<ul>
+                            		<li><img src="images/person01.png" alt=""/></li>
+                            		<li><img src="images/person01.png" alt=""/></li>
+                            		<li><img src="images/person01.png" alt=""/></li>
+                            		<li><img src="images/person01.png" alt=""/></li>
+                            		<li><img src="images/person01.png" alt=""/></li>
+                                    <li><img src="images/person01.png" alt=""/></li>
+                            		<li><img src="images/person01.png" alt=""/></li>
+                            		<li><img src="images/person01.png" alt=""/></li>
+                            		<li><img src="images/person01.png" alt=""/></li>
+                            		<li><img src="images/person01.png" alt=""/></li>
+                                    <li><img src="images/person01.png" alt=""/></li>
+                            		<li><img src="images/person01.png" alt=""/></li>
+                            		<li><img src="images/person01.png" alt=""/></li>
+                            		<li><img src="images/person01.png" alt=""/></li>
+                            		<li><img src="images/person01.png" alt=""/></li>
+                            	</ul>
+                            </div>
+						</div>
+						
+						<div class="inbox" style="width:50%;padding-top:10px;">
+                            <div class="womanList fl">
+                            	<ul>
+                            		<li><img src="images/person02.png" alt=""/></li>
+                            		<li><img src="images/person02.png" alt=""/></li>
+                            		<li><img src="images/person02.png" alt=""/></li>
+                            		<li><img src="images/person02.png" alt=""/></li>
+                            		<li><img src="images/person02.png" alt=""/></li>
+                                    <li><img src="images/person02.png" alt=""/></li>
+                            		<li><img src="images/person02.png" alt=""/></li>
+                            		<li><img src="images/person02.png" alt=""/></li>
+                            		<li><img src="images/person02.png" alt=""/></li>
+                            	</ul>
+                            </div>
+                            <div class="womanSex fl">
+                            	<span><img src="images/person2.png" alt=""/></span>
+                            	<em>40.00%<br/>女</em>
+                            </div>
+						</div>
+					</div>
+					
+				</div>
+				<!--........................3...................-->
+				<div class=" pie contain">
+					<div class="title">
+						店铺商品榜 <span>交易</span>
+					</div>
+					<div class="box">
+						
+						<div class="inbox inboxCenter" id="" style="width: 43%; overflow:hidden;">
+							
+							<ul class="pie04-channel channellist">
+								<li class="dn" data-type="list">
+									<div class="img">
+										<!--<span>0</span>-->
+										<img src="images/logo.jpg"/>
+									</div>
+									<div class="product">渠道</div>
+									<div class="money00">金额</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			
+			<!--热销商品与平铺排行-->
+			<div class="contain containSort">
+					<div class="box">
+						
+						<div class="inbox" id="" style="width: 53%;height:100%;background:rgba(0, 0, 0, 0) url(images/line.png) no-repeat scroll right 88% / 2px 90%">
+							<div class="sellTitle">销售额榜</div>
+							<ul class="pie04-channel goodsSortList goodsSortList01" style="margin:20px 0 0 0;">
+								<li class="dn" data-type="list">
+									<div class="number">
+										<span>0</span>
+									</div>
+									<div class="channel">北京同仁堂旗舰店</div>
+									<div class="money00"><span class="redCl">↑</span> 500</div>
+								</li>
+							</ul>
+						</div>
+						<div class="inbox" style="width: 47%;height:100%;">
+							<div class="sellTitle">达成率</div>
+							<ul class="pie04-channel shopSortList shopSortList01" style="margin:20px 0 0 0;">
+								<li class="dn" data-type="list">
+									<div class="number">
+										<span>0</span>
+									</div>
+									<div class="channel">北京同仁堂旗舰店</div>
+									<div class="money00"><span class="greenCl">↓</span> 10%</div>
+								</li>
+							</ul>
+							
+						</div>
+					</div>
+					
+				</div>
+		</div>
+		
+	    <script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>

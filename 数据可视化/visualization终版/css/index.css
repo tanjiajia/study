@@ -1,0 +1,318 @@
+body{
+	height: 100%; 
+	margin: 0;
+	width: 100%;
+	overflow: hidden;
+}
+.container{
+	width: 100%;
+	/**/
+}
+.pos-A{
+	position: absolute;
+}
+.pos-R{
+	position: relative;
+}
+html{
+	height: 100%;
+}
+.container{
+	width: 100%;
+	height: 100%;
+	background: url(../images/bg.jpg) no-repeat;
+	background-size: cover;
+	
+}
+/*h1{
+	width: 39%;
+	padding: 2.2% 0;
+	background: rgba(75,216,323,.4);
+	text-align: center;
+	top: 1.69%;
+	left: 0;
+	color: #fff;
+	font-weight: normal;
+}*/
+.map{
+	height: 100%;
+	opacity: .9;
+}
+/*..............今天/昨天交易金额样式开始............*/
+.money{
+	width: 38.1%;
+	position: absolute;
+	top: 1%;
+	left: 1%;
+	padding: 0.8% 1.4% 0.9% 0.5%;
+	background: #fe0000;
+	border: 1px solid #000;
+	border-radius: 8px;
+	box-sizing: border-box;
+}
+.money div{
+	font-size: 20px;
+}
+
+.money .payList{
+	float: left;
+	width: 100%;
+	padding-left: 7.2%;
+	margin-top: 3%;
+}
+.money .payList li{
+	height: 53%;
+	width: 8.4%;
+	background: #000;
+	margin-right: 3px;
+	float: left;
+	line-height: 66px;
+	text-align: center;
+	color: #fff001;
+	font-size: 76px;
+	font-family: impact;
+	padding: 4px 3px;
+	border-radius: 6px;
+}
+.money .day{
+	font-size: 40px;
+	line-height: 80px;
+	float: left;
+}
+.money .time{
+	color: #fff;
+	font-size: 18px;
+	line-height: 35px;
+	font-family: arial;
+}
+/*..............今天/昨天交易金额样式结束............*/
+.left{
+	width: 32%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	right: 1%;
+	
+	padding-bottom: 1.5%;
+	box-sizing: border-box;
+	display: -webkit-box; /* Chrome 4+, Safari 3.1, iOS Safari 3.2+ */
+	display: -moz-box; /* Firefox 17- */
+	display: box;
+	display: -webkit-flex; /* Chrome 21+, Safari 6.1+, iOS Safari 7+, Opera 15/16 */
+	display: -moz-flex; /* Firefox 18+ */
+	display: -ms-flexbox; /* IE 10 */
+	display: flex;
+  	box-orient: vertical;
+  	-webkit-box-orient: vertical;
+  	-moz-box-orient: vertical;
+  	-ms-flex-direction:column; 
+	flex-direction:column;
+ 	box-align: center;
+  	-webkit-box-align: center;
+}
+.tac{
+	text-align: center;
+}
+
+.contain{
+	height: 33%;
+	position: relative;
+	border-radius: 5px;
+	-webkit-box-shadow: 0 0 5px rgba(255,255,255,.3);
+	box-shadow: 0 0 5px rgba(255,255,255,.3);
+	padding: 30px 10px 0px;
+	width: 100%;
+	margin-top: 40px;
+	box-sizing: border-box;
+	-webkit-box-flex:1;
+	-moz-box-flex:1;
+	-ms-box-flex:1;
+	flex:1;
+  	display: box;
+  	display: -webkit-box;
+	box-align: center;
+  	-webkit-box-align: center;
+}
+.box .inbox.inboxCenter{
+	height: auto;	
+}
+.box{
+	width: 100%;
+	display: -webkit-box; /* Chrome 4+, Safari 3.1, iOS Safari 3.2+ */
+	display: -moz-box; /* Firefox 17- */
+	display: -webkit-flex; /* Chrome 21+, Safari 6.1+, iOS Safari 7+, Opera 15/16 */
+	display: -moz-flex; /* Firefox 18+ */
+	display: -ms-flexbox; /* IE 10 */
+	display: flex;
+  	box-align: center;
+  	-webkit-box-align: center;
+  	position: absolute;
+  	top: 10%;
+  	bottom: 10%;
+}
+.box .inbox{
+	-webkit-box-flex:1;
+	-moz-box-flex:1;
+	-ms-box-flex:1;
+	flex:1;
+	height: 100%;
+}
+.title{
+	width: 61.3%;
+	background: -webkit-linear-gradient(left, rgba(152,32,44,0), rgba(152,32,44,.9) 18.3%,  rgba(152,32,44,.9),  rgba(152,32,44,.9) 81.7%, rgba(152,32,44,0));
+	background: -moz-linear-gradient(left, rgba(152,32,44,0), rgba(152,32,44,.9) 18.3%,  rgba(152,32,44,.9),  rgba(152,32,44,.9) 81.7%, rgba(152,32,44,0));
+	background: -ms-linear-gradient(left, rgba(152,32,44,0), rgba(152,32,44,.9) 18.3%,  rgba(152,32,44,.9),  rgba(152,32,44,.9) 81.7%, rgba(152,32,44,0));
+	background: linear-gradient(left, rgba(152,32,44,0), rgba(152,32,44,.9) 18.3%,  rgba(152,32,44,.9),  rgba(152,32,44,.9) 81.7%, rgba(152,32,44,0));
+	/*height: 40px;*/
+	text-align: center;
+	line-height: 30px;
+	color: #fdf001;
+	font-size: 20px;
+	font-family: 微软雅黑;
+	position: absolute;
+	left: 50%;
+	top: -20px;
+	transform: translateX(-50%);
+	border-top: 1px solid #17141f;
+	border-bottom: 1px solid #17141f;
+}
+.title span{
+	font-size: 18px;
+}
+
+.inbox .pie04-channel{
+	margin-top: 10px;
+}
+.pie04-channel{
+	width: 100%;
+}
+.pie04-channel li{
+	overflow: hidden;
+	width: 100%;
+	padding-left: 5%;
+	margin-bottom: 5px;
+	box-sizing: border-box;
+}
+.pie04-channel li div{
+	float: left;
+	color: #ccccd2;
+	font-size: 16px;
+	font-family: 微软雅黑;
+}
+.pie04-channel li div:nth-child(1){
+	width: 10%;
+}
+.pie04-channel li div:nth-child(2){
+	width: 60%;
+	text-indent:10px;
+}
+.pie04-channel li div:nth-child(3){
+	width: 20%;
+	text-align:right
+}
+.pie04-channel li:nth-child(1) div.number span{
+	background: none;
+	color: transparent;
+}
+.pie04-channel li div.number span{
+	background: #50e6f6;
+	border-radius: 100%;
+	color: #fff;
+	width: 16px;
+	height: 16px;
+	line-height: 16px;
+	display: block;
+}
+.dn{
+	display: none;
+}
+/*。。。。。。。。。。。。。热销商品与平铺排行。。。。。。。。。。。。*/
+.containSort{
+	position: absolute;
+	bottom: 5%;
+	left: 1%;
+	width: 32.7%;
+	margin-top: 0;
+	padding-left: 42px;
+	padding-top: 0;
+	height: auto;
+	padding: 10px 20px;
+	/*background: rgba(0,0,0,.5);*/
+}
+.goodsSortList .channel{
+	width: 60% !important;
+}
+.containSort .box .inbox{
+	-webkit-box-flex:1;
+	-moz-box-flex:1;
+	-ms-box-flex:1;
+	flex:1;
+}
+.containSort .box{
+	position: relative;
+	top: auto;
+	bottom: auto;
+}
+.goodsSortList{
+	width: 100%;
+	margin-bottom: 25px;
+	margin-top: 0;
+	
+}
+.pie04-channel.goodsSortList li div:nth-child(1),
+.pie04-channel.shopSortList li div:nth-child(1){
+	width: 7%;
+}
+.pie04-channel.shopSortList li div:nth-child(2){
+	width: 60%;
+}
+.pie04-channel.shopSortList li div:nth-child(3){
+	width: 33%;
+}
+.goodsSortList01 li div.number span, .shopSortList01 li div.number span{
+	background: #fe0000;
+	border-radius: 100%;
+	color: #fff;
+	width: 16px;
+	height: 16px;
+	line-height: 16px;
+	display: block;
+	text-align: center;
+}
+.goodsSortList01 li ol li, .shopSortList01 li ol li{
+	float: left;
+	margin-bottom: 10px;
+	color: #fff;
+}
+.goodsSortList01 .shopName, .shopSortList01 .shopName{
+	width: 10%;
+	color: #fff;
+	margin-left: 35px;
+	text-align: center;
+}
+.goodsSortList01  ol li, .shopSortList01  ol li{
+	margin-left: 15px;
+}
+.goodsSortList01  ol li.ml32, .shopSortList01  ol li.ml32{
+	margin-left: 32px;
+}
+
+/*新增买家画像样式*/
+.Ltitle{font:16px/20px microsoft yahei;color:#c7c77e;position:absolute;margin-left:17%;}
+.floatL{float:left;}
+.sellTitle {text-align:center;font:21px/30px Microsoft yahei;color:#fff;}
+.redCl{color:red;}
+.greenCl{color:#1fdc00;}
+.manSex{width:22%;height:100%;text-align:center;position:absolute;top:10px;left:0}
+.manSex span{display: inline-block; height: 61%;}
+.manSex img, .womanSex img{height:100%;width:auto}
+.manSex em, .womanSex em {width:100%;padding-top:2%;font:18px/22px Microsoft yahei;color:#fff;display:block}
+.manList{width:25%;height:100%;position:absolute;left:25%;top:10px}
+.manList ul{height:100%;padding-right:10%;}
+.manList li, .womanList li {width:25%;height:25%;float:left;}
+.manList li img, .womanList li img {width:auto;height:59%;}
+.womanSex {width:22%;height:100%;text-align:center;position:absolute;top:10px;right:5%}
+.womanSex span {display: inline-block; height: 61%;}
+.womanSex em {color:#c38a2c;}
+.womanList {width:25%;height:100%;position:absolute;right:25%;top:10px}
+.womanList ul {height:100%;padding-left:15%;}
