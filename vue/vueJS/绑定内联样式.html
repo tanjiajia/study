@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<!--<div id="watch-example" v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }">绑定内联样式</div>-->
+		<!--<div id="watch-example" v-bind:style="styleObject">绑定内联样式</div>-->
+		<div id="watch-example">
+			<!--<div v-bind:style="styleObject">绑定内联样式</div>-->
+			
+			<!--条件渲染判断-->
+			<!--<div v-if="Math.random() > 0.5">
+			  Sorry
+			</div>
+			<div v-else>
+			  Not sorry
+			</div>-->
+			
+			<template v-if="loginType === 'username'">
+			  <label>Username</label>
+			  <input placeholder="Enter your username">
+			</template>
+			<template v-else>
+			  <label>Email</label>
+			  <input placeholder="Enter your email address">
+			</template>
+		</div>
+		<script type="text/javascript">
+/*			var watchExampleVM = new Vue({
+			 	el: '#watch-example',
+			  	data: {  
+				  styleObject: {
+				    color: 'red',
+				    fontSize: '13px'
+				  }
+				}
+			})*/
+		</script>
+	</body>
+</html>

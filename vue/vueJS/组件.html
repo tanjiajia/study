@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="example">
+		  <my-component></my-component>
+		</div>
+		<script type="text/javascript">
+			// 注册
+			Vue.component('my-component', {
+			  template: '<div>A custom component!</div>'
+			})
+			
+			var example = new Vue({
+			  el: '#example',
+			  // 选项
+			})
+		</script>
+		
+		<!--DOM模板解释说明-->
+		<div id="example-2">
+		  <simple-counter></simple-counter>
+		  <simple-counter></simple-counter>
+		  <simple-counter></simple-counter>
+		</div>
+		<script type="text/javascript">
+			var data = { counter: 0 }
+			Vue.component('simple-counter', {
+			  template: '<button v-on:click="counter += 1">{{ counter }}</button>',
+			  // data 是一个函数，因此 Vue 不会警告，
+			  // 但是我们为每一个组件返回了同一个对象引用
+			  data: function () {
+				  return {
+				    counter: 0
+				  }
+				}
+			})
+			new Vue({
+			  el: '#example-2'
+			})
+		</script>
+
+	</body>
+</html>

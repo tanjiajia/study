@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="vue.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="demo">
+		  <h1>{{title | uppercase}}</h1>
+		  <ul>
+		    <li
+		      v-repeat="todos"
+		      v-on="click: done = !done"
+		      class="{{done ? 'done' : ''}}">
+		      {{content}}
+		    </li>
+		  </ul>
+		</div>
+		<script type="text/javascript">
+			var demo = new Vue({
+				  el: '#demo',
+				  data: {
+				    title: 'todos',
+				    todos: [
+				      {
+				        done: true,
+				        content: 'Learn JavaScript'
+				      },
+				      {
+				        done: false,
+				        content: 'Learn Vue.js'
+				      }
+				    ]
+				  }
+				})
+		</script>
+		<!--条件与循环-->
+		<div id="app-4">
+		  <ol>
+		    <li v-for="todo in todos">
+		      {{ todo.text }}
+		    </li>
+		  </ol>
+		</div>
+		<script type="text/javascript">
+			var app4 = new Vue({
+				el:'#app-4',
+				data:{
+					todos:[
+						{text: 'one'},
+						{text: 'two'},
+						{text: 'three'}
+					]
+				}
+			})
+		</script>
+		<!--处理用户输入-->
+		<div id="app-5">
+		  	<p>{{ message }}</p>
+		  	<button v-on:click="reverseMessage">Reverse Message</button>
+		</div>
+		<script type="text/javascript">
+			var app5 = new Vue ({
+				el:'#app-5',
+				data:{
+					message:'hello vue'
+				},
+				methods:{
+					reverseMessage:function(){
+						this.message=this.message.split('').reverse().join('');
+					}
+				}
+			})
+		</script>
+		<!--v-model指令-->
+		<div id="app-6">
+		  <p>{{ message }}</p>
+		  <input v-moel="message">
+		</div>
+		<script type="text/javascript">
+			var app6 = new Vue({
+				el:'#app-6',
+				data:{
+					message:'hello vue!'
+				}
+			})
+		</script>
+		
+		<!--用组件构建应用-->
+		<div id="app-7">
+		  <ol>
+		    <todo-item v-for="item in groceryList" v-bind:todo="item"></todo-item>
+		  </ol>
+		</div>
+		<script type="text/javascript">
+			Vue.component('todo-item', {
+			  props: ['todo'],
+			  template: '<li>{{ todo.text }}</li>'
+			})
+			var app7 = new Vue({
+			  el: '#app-7',
+			  data: {
+			    groceryList: [
+			      { text: 'Vegetables' },
+			      { text: 'Cheese' },
+			      { text: 'Whatever else humans are supposed to eat' }
+			    ]
+			  }
+			})
+		</script>
+		
+		
+	</body>
+</html>

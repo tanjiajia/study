@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<ul id="example-1">
+		  <li v-for="item in items">
+		    {{ item.message }}
+		  </li>
+		</ul>
+		<script type="text/javascript">
+			var example1 = new Vue({
+				el:'#example-1',
+				data:{
+					items:[					
+						{message:'one'},
+						{message:'two'},
+						{message:'three'}
+					]
+				}
+			})
+		</script>
+		
+		<ul id="example-2">
+		  <li v-for="(item, index) in items">
+		    {{ parentMessage }} - {{ index }} - {{ item.message }}
+		  </li>
+		</ul>
+		<script type="text/javascript">
+			var example2 = new Vue({
+			  el: '#example-2',
+			  data: {
+			    parentMessage: 'Parent',
+			    items: [
+			      { message: 'Foo' },
+			      { message: 'Bar' }
+			    ]
+			  }
+			})
+		</script>
+		<!--可以用 v-for 通过一个对象的属性来迭代。-->
+		<ul id="repeat-object" class="demo">
+		  <!--<li v-for="value in object">
+		    {{ value }}
+		    
+		  </li>-->
+		 	<!--<li v-for="(value, key, index) in object">
+			  	{{ index }}. {{ key }} : {{ value }}
+			</li>-->
+			<!--<li v-for="n in evenNumbers">{{ n }}</li>-->
+			<li v-for="n in even(numbers)">{{ n }}</li>
+		</ul>
+		<script type="text/javascript">
+			new Vue({
+			  el: '#repeat-object',
+/*			  data: {
+			    object: {
+			      FirstName: 'John',
+			      LastName: 'Doe',
+			      Age: 30
+			    }
+			  }*/
+				/*data: {
+				  numbers: [ 1, 2, 3, 4, 5 ,6]
+				},
+				computed: {
+				  evenNumbers: function () {
+				    return this.numbers.filter(function (number) {
+				      return number % 2 === 0
+				    })
+				  }
+				}*/
+				data: {
+				  numbers: [ 1, 2, 3, 4, 5 ]
+				},
+				methods: {
+				  	even: function (numbers) {
+				    	return numbers.filter(function (number) {
+				      		return number % 2 === 0
+				    	})
+				  	}
+				}
+			})
+		</script>
+	</body>
+</html>

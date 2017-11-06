@@ -1,0 +1,8 @@
+https://github.com/javaSwing/MusicAPI  
+
+
+http://git.oschina.net/javaSwing/NeteaseCloudWebApp
+
+
+网站提供的api接口文档：
+https://api.imjad.cn/cloudmusic/index.html

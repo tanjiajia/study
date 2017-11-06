@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="example-1">
+		  <button v-on:click="counter += 1">增加 1</button>
+		  <p>这个按钮被点击了 {{ counter }} 次。</p>
+		</div>
+		<script type="text/javascript">
+			var example1 = new Vue({
+			  	el: '#example-1',
+			  	data: {
+			    	counter: 0
+			  	}
+			})
+		</script>
+		
+		<!--方法事件处理器-->
+		<div id="example-2">
+		  <!-- `greet` 是在下面定义的方法名 -->
+		  <button v-on:click="greet">Greet</button>
+		</div>
+		<script type="text/javascript">
+			var example2 = new Vue({
+				el:'#example-2',
+				data:{
+					name:'vue.js'
+				},
+				methods:{
+					greet:function(){
+						alert('hello '+this.name+' !');
+						alert(event.target.tagName);
+					}
+				}
+			})
+		</script>
+		
+		    
+		
+	</body>
+</html>

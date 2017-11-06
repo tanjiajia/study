@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+		  	<p v-if="seen">Now you see me</p>
+		</div>
+		<!--2、-->
+		<div id="app2">
+		  	<ol>
+			    <li v-for="todo in todos">
+			     	{{ todo.text }}
+			    </li>
+		  	</ol>
+		</div>
+		<script type="text/javascript">
+//			常用指令 1、v-if:通过判断加载内容，若为真加载，为假时删除元素
+			new Vue({
+			  	el: '#app',
+			  	data: {
+			    	seen: true
+			  	}
+			})		
+			
+			//2、v-for:控制html元素的循环，实现数据列表
+			new Vue({
+			  	el: '#app2',
+			  	data: {
+				    todos: [
+				      	{ text: 'Learn JavaScript' },
+				  		{ text: 'Learn Vue' },
+				 	 	{ text: 'Build something awesome' }
+				    ]
+			  	}
+			})
+		</script>
+		
+		<div id="app-2">
+		  <span v-bind:title="message">
+		    Hover your mouse over me for a few seconds to see my dynamically bound title!
+		    <!--{{message}}-->
+		  </span>
+		</div>
+		<script type="text/javascript">
+			new Vue({
+				el:'#app-2',
+				data:{
+					message:'you loaded this page on'+ new Date();
+				}
+			})
+		</script>
+	</body>
+</html>
