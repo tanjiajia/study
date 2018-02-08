@@ -1,0 +1,176 @@
+@font-size:24;
+//@px:round(1/24,5)*1rem;
+@px:0.5*1px;
+.addCss(@index;@name;@key;@i:0) when
+(@index >= @i){
+    .@{name}@{i}{
+        @{key}:round(1/@font-size,5)*1rem*@i;
+    }
+    .addCss(@index;@name;@key;@i+1);
+}
+//.............................................................布局
+.fl(){float:left;}
+.fr(){float:right;}
+.oh(){overflow:hidden}
+.vh(){visibility: hidden}
+.dbl(){display:block}
+.dn(){display:none !important}
+//.............................................................css3布局
+//弹性布局
+.db(){
+    display:box;
+    display:-webkit-box;
+}
+//居顶(水平排列)，居左(垂直排列)
+.as(){
+    box-align : start;
+    -webkit-box-align : start;
+}
+//垂直居中(水平排列)，水平居中(垂直排列时)
+.ac(){
+    box-align : center;
+    -webkit-box-align : center;
+}
+//居底(水平排列)，居右(垂直排列)
+.ae(){
+    box-align : end;
+    -webkit-box-align : end;
+}
+//居右(水平排列)，居底(垂直排列)
+.ps(){
+    box-pack : start;
+    -webkit-box-pack : start;
+}
+//水平居中(水平排列)，垂直居中(垂直排列)
+.pc(){
+    box-pack : center;
+    -webkit-box-pack : center;
+}
+//居右(水平排列)，居底(垂直排列)
+.pe(){
+    box-pack : end;
+    -webkit-box-pack : end;
+}
+//两端对齐
+.pj(){
+    box-pack : justify;
+    -webkit-box-pack : justify;
+}
+//切换布局为垂直方向
+.bov(){
+    box-orient : vertical;
+    -webkit-box-orient : vertical;
+}
+//伸缩尺寸
+.bf(@key){
+    box-flex : @key;
+    -webkit-box-flex : @key;
+} 
+//盒子尺寸
+.box-sizing(@key){
+    box-sizing : @key;
+    -webkit-box-sizing : @key;
+} 
+//.............................................................填充
+.m(@key){margin:@key;}
+.mt(@key){margin-top:@key;}
+.mr(@key){margin-right:@key;}
+.mb(@key){margin-bottom:@key;}
+.mb(@key){margin-left:@key;}
+.p(@key){padding:@key;}
+.pt(@key){padding-top:@key;}
+.pr(@key){padding-right:@key;}
+.pb(@key){padding-bottom:@key;}
+.pl(@key){padding-left:@key;}
+//.............................................................长宽
+.w(@key){width:@key;}
+.h(@key){height:@key;}
+//.............................................................定位
+.pr(){position:relative;}
+.pa(){position:absolute;}
+.pf(){position:fixed;}
+.t(@key){top:@key;}
+.r(@key){right:@key;}
+.b(@key){bottom:@key;}
+.l(@key){left:@key;}
+//.............................................................属性内方法
+//圆角
+.border-radius(@key){
+//    border-radius : @key;
+    -webkit-border-radius : @key;
+//    -moz-border-radius : @key;
+} 
+//盒子阴影
+.box-shadow(@key){
+//    box-shadow : @key;
+    -webkit-box-shadow : @key;
+//    -moz-box-shadow : @key;
+}
+//字体阴影
+.text-shadow(@key){
+//    text-shadow : @key;
+    -webkit-text-shadow : @key;
+//    -moz-text-shadow : @key;
+}
+//背景尺寸
+.background-size(@key){
+//    background-size : @key;
+    -webkit-background-size : @key;
+//    -moz-background-size : @key;
+} 
+//背景图片
+.background-image(@key){
+//    background-image:linear-gradient(@key);
+    background-image:-webkit-linear-gradient(@key);
+//    background-image:-moz-linear-gradient(@key);
+//    background-image:-ms-linear-gradient(@key);
+}
+//两张背景图片
+.background-image2(@key;@key2){
+//    background-image:linear-gradient(@key),linear-gradient(@key2);
+    background-image:-webkit-linear-gradient(@key),-webkit-linear-gradient(@key2);
+//    background-image:-moz-linear-gradient(@key),-moz-linear-gradient(@key2);
+//    background-image:-ms-linear-gradient(@key),-ms-linear-gradient(@key2);
+}
+//3D元素距视图的距离
+.perspective(@key){
+//    perspective:@key;
+    -webkit-perspective:@key;
+//    -moz-perspective:@key;
+}
+//3D元素的基点位置
+.perspective-origin(@key){
+//    perspective-origin:@key;
+    -webkit-perspective-origin:@key;
+//    -moz-perspective-origin:@key;
+}
+//是否保留3D位置
+.transform-style(@key){
+//    transform-style:@key;
+    -webkit-transform-style:@key;
+//    -moz-transform-style:@key;
+}
+//元素不面向屏幕时是否可见
+.backface-visibility(@key){
+//    backface-visibility:@key;
+    -webkit-backface-visibility:@key;
+//    -moz-backface-visibility:@key;
+}
+//过渡属性
+.transition(@key){
+    transition:@key;
+    -webkit-transition:@key;
+    -moz-transition:@key;
+}
+//变形
+.transform(@key){
+//    transform:@key;
+    -webkit-transform:@key;
+//    -moz-transform:@key;
+}
+//滤镜
+.filter(@key){
+//    filter:@key;
+    -webkit-filter:@key;
+//    -moz-filter:@key;
+}
