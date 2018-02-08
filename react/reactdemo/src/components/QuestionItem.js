@@ -1,48 +1,37 @@
 /*
 * @Author: Administrator
 * @Date:   2017-08-17 13:50:08
-* @Last Modified by:   Administrator
-* @Last Modified time: 2017-08-25 14:39:15
+* @Last Modified by:   root
+* @Last Modified time: 2018-02-08 11:48:16
 */
 import React, { Component } from 'react';
 
 class QuestionItem extends Component{
-	constructor(props){
+	constructor (props){
 		super(props);
-				
 	}
 
-	componentDidMount(){
-		console.log(this.props.voteCount);
+	voteUp = (e) => {
+		console.log('this.props.voteCount', e)
+		var newCount = parseInt(this.props.voteCount ,10) + 1;
+		console.log('this.props.questionKey', this.props.questionKey)
+		this.props.onVote( this.props.questionKey, newCount )
 	}
-	
-
-	voteUp(){
-		// const newcount = parseInt(this.props.voteCount, 10)+1;
-		
-		var newcount = this.props.voteCount+1;
-		
-		this.props.onVote(this.props.questionKey, newcount);
+	voteDown = (e) => {
+		var newCount = parseInt(this.props.voteCount ,10) - 1;
+		this.props.onVote( this.props.questionKey, newCount )
 	}
-
-	voteDown(){
-		// var newcount = parseInt(this.props.voteCount, 10)-1;
-		var newcount = this.props.voteCount-1;
-		console.log(newcount);
-		// this.props.onVote(this.props.questionKey, newcount);
-	}
-
 	render(){
-
+		
 		return(			
 	        <div className="media">
 	            <div className="media-left">
-	              <button className="btn btn-default" onClick={ () => { this.voteUp(); } }>
-	                <span className="glyphicon">↑</span>
-	                <span className="vote-count">{ this.props.voteCount }</span>
+	              <button className="btn btn-default" onClick={ this.voteUp }>
+	                <span className="">↑</span>
 	              </button>
-	              <button className="btn btn-default" onClick={ this.voteDown }>
-	                <span className="glyphicon">↓</span>
+	              <span className="vote-count">{ this.props.voteCount }</span>
+	              <button className="btn btn-default" onClick={this.voteDown}>
+	                <span className="">↓</span>
 	              </button>
 	            </div>
 	            <div className="media-body">

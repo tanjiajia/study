@@ -1,15 +1,12 @@
-// import React from 'react';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
 import Questionapp from './components/Questionapp';
-// import registerServiceWorker from './registerServiceWorker';
+// import QuestionForm from './components/QuestionForm';
+import registerServiceWorker from './registerServiceWorker';
 
-// eslint-disable-next-line
-// React.render(
-// 	 <Questionapp />,
-// 	document.getElementById('app')
-// );
-ReactDOM.render(<Questionapp url='./json/Question.json'/>, document.getElementById('app'));
 
-// registerServiceWorker();
+ReactDOM.render(
+    <Questionapp  url="json/Question.json" />, 
+	document.getElementById('app'));
+registerServiceWorker();
