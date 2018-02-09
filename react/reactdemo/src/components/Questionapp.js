@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-08-17 10:07:28
 * @Last Modified by:   root
-* @Last Modified time: 2018-02-08 14:09:50
+* @Last Modified time: 2018-02-09 15:43:47
 */
 
 import React, { Component } from 'react';
@@ -32,7 +32,8 @@ class Questionapp extends Component {
 					voteCount: 8,
 				}
 			],
-			formDisplayed: false 
+			formDisplayed: false,
+			addBtn: '添加问题'
 		}
 		// this.getQuestion();
 	}
@@ -56,14 +57,23 @@ class Questionapp extends Component {
 		this.setState({
 			formDisplayed: !this.state.formDisplayed,
 		})
+		if (this.state.formDisplayed) {
+			this.setState({
+				addBtn: '添加问题'
+			})
+		} else {
+			this.setState({
+				addBtn: '取消'
+			})
+		}
 	}
 
 	onNewQuestion = (newQuestion) => {
 		newQuestion.key = this.state.questions.length + 1;
 
-		var newQuestions = this.state.questions.concat( newQuestion );
+		var newQuestions = this.state.questions.concat(newQuestion);
 
-		newQuestions = this.sortQuestion( newQuestions );
+		newQuestions = this.sortQuestion(newQuestions);
 
 		this.setState({
 			questions: newQuestions,
@@ -98,7 +108,7 @@ class Questionapp extends Component {
 	        <div className="jumbotron text-center">
 		          <div className="container">
 		            <h5>问答</h5>
-		            <ShowAddButton onToggleForm={ this.onToggleForm }/>
+		            <ShowAddButton onToggleForm={ this.onToggleForm } addBtn={ this.state.addBtn }/>
 		          </div>
 		    </div>
 		    <div className="main container">
