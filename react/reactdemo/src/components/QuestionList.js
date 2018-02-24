@@ -2,16 +2,16 @@
 * @Author: Administrator
 * @Date:   2017-08-17 13:50:08
 * @Last Modified by:   root
-* @Last Modified time: 2018-02-08 10:49:53
+* @Last Modified time: 2018-02-23 09:51:41
 */
 
 import React, { Component } from 'react';
 import QuestionItem from './QuestionItem';
 
 export default class QuestionList extends Component {
-	constructor (props){
-		super(props);
-	}
+	// constructor (props){
+	// 	super(props);
+	// }
 
 	render () {
         let questions = this.props.questions

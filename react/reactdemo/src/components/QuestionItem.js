@@ -2,14 +2,14 @@
 * @Author: Administrator
 * @Date:   2017-08-17 13:50:08
 * @Last Modified by:   root
-* @Last Modified time: 2018-02-08 11:48:16
+* @Last Modified time: 2018-02-23 09:51:17
 */
 import React, { Component } from 'react';
 
 class QuestionItem extends Component{
-	constructor (props){
-		super(props);
-	}
+	// constructor (props){
+	// 	super(props);
+	// }
 
 	voteUp = (e) => {
 		console.log('this.props.voteCount', e)
